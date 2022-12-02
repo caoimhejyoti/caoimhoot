@@ -7,14 +7,13 @@
     med-margin: 20px;
     small-margin: 10px;
 
-
 }
 
 html {
-    scroll-behavior: smooth;
-  }
+    scroll-behavior: smooth;   
+}
 
-  body {
+body {
     background-color: var(background-color);
     color: var(dark-color);
     font-size: 16px;
@@ -22,4 +21,14 @@ html {
     margin: var(big-margin);
     padding: 0;
     width: 100%;
-  }
+}
+
+header {
+    background-color: var(dark-color);
+    color: var(background-color);
+    font-size: 16px;
+    line-height: 1.5;
+    margin: var(med-margin);
+    padding: 0;
+    width: 100%;
+}
