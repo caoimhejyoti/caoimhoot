@@ -53,3 +53,47 @@ header #Title2{
     display: none;
 }
 
+.results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 2vw;
+    margin: 10px;
+}
+
+.table table {
+    width: 50vw;
+}
+
+
+.table table,th, td{
+    border: 1px solid var(--highlight-color);
+    font-size: 2vw;
+    border-collapse: collapse;
+    
+
+}
+
+
+.again{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 2vw;
+}
+
+.again p{
+    padding: 10px;
+}
+
+.again button{
+    background-color: var(--highlight-color);
+    padding: 25px;
+    margin: 100px;
+    border-radius: 5px;
+    font-size: 3vw;
+}
