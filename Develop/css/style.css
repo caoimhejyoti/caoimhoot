@@ -1,2 +1,55 @@
+/* Nav display*/
+#nav{
+    display: flex;
+    justify-content:space-between;
+    font-size: 1.6vw;
+    margin: 10px;
+}
 
+
+/* header display */
+header {
+    display: flexbox;
+
+
+}
+header #welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+header #quizTime{
+    display:none;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.intro{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 2vw;
+}
+
+.intro p{
+    padding: 10px;
+}
+
+.intro button{
+    background-color: var(--highlight-color);
+    padding: 25px;
+    margin: 100px;
+    border-radius: 5px;
+    font-size: 3vw;
+}
+
+.quiz{
+    display: flex;
+    display: none;
+}
 

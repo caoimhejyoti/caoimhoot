@@ -3,9 +3,7 @@
     --highlight-color: #a7bdf7;
     --dark-color: #0d324d;
     --light-color: #2c6e49;
-    --big-margin: 50px;
-    --med-margin: 20px;
-    --small-margin: 10px;
+
 
 }
 
@@ -13,12 +11,17 @@ html {
     scroll-behavior: smooth;   
 }
 
+h1{
+    font-size: 6vw;
+    
+}
+
+
 body {
     background-color: var(--background-color);
     color: var(--dark-color);
     font-size: 16px;
     line-height: 1.5;
-    margin: var(--big-margin);
     padding: 0;
     width: 100%;
 }
@@ -28,14 +31,8 @@ header {
     color: var(--background-color);
     font-size: 16px;
     line-height: 1.5;
-    margin: var(--med-margin);
-    padding: 0;
-    width: 100%;
+    margin: 10px 0px;
+    padding: 20px 0px;
+    width: 100vw
 }
 
-button{
-    background-color: var(--highlight-color);
-    border: one;
-    padding: 5px;
-    border-radius: 5px;
-}
