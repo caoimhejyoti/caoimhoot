@@ -13,14 +13,14 @@ header {
 
 
 }
-header #welcome {
+header #Title1 {
     display: flex;
     align-items: center;
     justify-content: center;
     
 }
 
-header #quizTime{
+header #Title2{
     display:none;
     align-items: center;
     justify-content: center;
