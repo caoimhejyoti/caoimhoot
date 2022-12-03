@@ -3,11 +3,7 @@ var startBtn = document.querySelector(".start-btn");
 var timeEl = document.querySelector(".time");
 var secondsLeft = 100;
 // quiz vars
-const question1El = document.querySelector(".quiz-item1");
-const question2El = document.querySelector(".quiz-item2");
-const question3El = document.querySelector(".quiz-item3");
-const question4El = document.querySelector(".quiz-item4");
-let quiz = [question1El, question2El, question3El, question4El];
+let questions = [(document.querySelector(".quiz-item1")),(document.querySelector(".quiz-item2")), (document.querySelector(".quiz-item3")), (document.querySelector(".quiz-item4"))];
 
 console.log(startBtn);
 
@@ -25,6 +21,28 @@ function setTime() {
 }
 
 
-// this function will develop, adding more functions to include all effects.
-startBtn.addEventListener("click", setTime);
+function quiz() {
+  var intro = document.querySelector(".intro");
+  var quiz = document.querySelector(".quiz");
 
+
+  if (quiz.style.display = 'none');
+    intro.style.display = 'none';
+    quiz.style.display = 'block';
+
+
+}
+
+
+function quizTime () {
+  setTime ();
+  console.log(setTime());
+  console.log("set time is working");
+  quiz ();
+  console.log(quiz());
+  console.log("quiz is working");
+
+}
+
+// this function will develop, adding more functions to include all effects.
+startBtn.addEventListener("click", quizTime);
