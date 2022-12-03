@@ -4,8 +4,15 @@ var timeEl = document.querySelector(".time");
 var secondsLeft = 100;
 // quiz vars
 let questions = [(document.querySelector(".quiz-item1")),(document.querySelector(".quiz-item2")), (document.querySelector(".quiz-item3")), (document.querySelector(".quiz-item4"))];
-
+console.log(questions);
 console.log(startBtn);
+
+// initial js stlyes
+function homeStyle(questions) {
+for (let i = 0; i < questions.length; i++){
+questions[i].style.display = 'none'
+}
+}
 
 // timer function
 function setTime() {
@@ -28,11 +35,17 @@ function quiz() {
 
   if (quiz.style.display = 'none');
     intro.style.display = 'none';
-    quiz.style.display = 'block';
+
+  
+    for (let i = 0; i < questions.length; i++) {
+      questions[i].style.display = 'block';
+      
+    }
 
 
 }
-
+console.log(questions[0]);
+;
 
 function quizTime () {
   setTime ();
