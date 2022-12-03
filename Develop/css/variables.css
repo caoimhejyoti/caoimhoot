@@ -16,6 +16,16 @@ h1{
     
 }
 
+h2{
+    font-size: 4vw;
+    
+}
+
+h3{
+    font-size: 3vw;
+    
+}
+
 
 body {
     background-color: var(--background-color);

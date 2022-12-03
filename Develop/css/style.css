@@ -50,9 +50,28 @@ header #Title2{
 
 .quiz{
     display: flex;
-    display: none;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 2vw;
+
 }
 
+.quiz-item1, .quiz-item2, .quiz-item3, .quiz-item4 {
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px;
+}
+.quiz h2, h3, button {
+    padding: 10px;
+}
+
+.quiz h2 {
+    text-align: center;
+}
 .results {
     display: flex;
     flex-direction: column;
