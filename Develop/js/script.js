@@ -90,3 +90,14 @@ function wrongAnswerReact(){
 
 // FIXME:
 wrongBtn.addEventListener("click", wrongAnswerReact); 
+
+// local storage - storing end time
+function storeTime() {
+  localStorage.setItem("time", secondsLeft);
+  console.log("store time is working");
+}
+
+
+
+// using local storage to create a score
+
