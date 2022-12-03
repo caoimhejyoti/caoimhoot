@@ -119,5 +119,27 @@ var questions = [
     title: 'How do you call a function?',
     choices: ['function ();', 'function;', 'function[];', 'function{};'],
     answer: 'function ()',
-  },
+  }
+]
+
+
+// from mod4.20 - needs to be for answers not questions.
+function event () {
+ 
+  var element = event.target;
+  
+  var state = element.getAttribute("data-state");
+  
+  if (state === "hidden"){
+    element.setAttribute("data-state", "visible");
+  
+    element.textContent = element.getAttribute("data-number") ;
+    
+  }else {
+    element.setAttribute("data-state", "hidden");
+    element.textContent = "";
+  }
+  
+  
+})
 
