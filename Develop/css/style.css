@@ -72,6 +72,12 @@ header #Title2{
 .quiz h2 {
     text-align: center;
 }
+
+/* .quiz button{
+    margin: 25px;
+    border-radius: 50px;
+
+} */
 .results {
     display: flex;
     flex-direction: column;

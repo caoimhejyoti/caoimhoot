@@ -3,8 +3,8 @@
     --highlight-color: #a7bdf7;
     --dark-color: #0d324d;
     --light-color: #2c6e49;
-
-
+    --right-color: #169873;
+    --wrong-colour: #f25757;
 }
 
 html {
@@ -46,3 +46,9 @@ header {
     width: 100vw
 }
 
+button{
+    margin: 15 px;
+    border-radius: 50px;
+    background-color: var(--dark-color);
+    color: var(--background-color);
+}
