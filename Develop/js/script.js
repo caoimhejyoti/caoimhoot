@@ -15,25 +15,50 @@ let availableQuestions = [];
 // list of all questions, choices, and answers
 let fullQuestions = [
   {
-    title: 'Commonly used data types DO NOT include:',
-    choice:'strings',
-    choice:'booleans',
-    choice:'alerts',
+    question: 'Commonly used data types DO NOT include:',
+    choice1:'strings',
+    choice2:'booleans',
+    choice3:'alerts',
     answer: 3,
   },
   {
-    title: 'Camel Case is a:',
-    choices: ['water bottle', 'way of naming JavaScript elements', 'a police case involving a camel in 1976'],
-    answer: 'way of naming JavaScript elements',
+    question: 'Camel Case is a:',
+    choice1: 'water bottle',
+    choice2: 'way of naming JavaScript elements',
+    choice3: 'a police case involving a camel in 1976',
+    answer: 2,
   },
   {
-    title: 'How do you call a function?',
-    choices: ['function ();', 'function[];', 'function{};'],
-    answer: 'function ()',
+    question: 'How do you call a function?',
+    choice1: 'function ();',
+    choice2: 'function [];',
+    choice3: 'function {};',
+    answer: 1,
   }
 ];
 // Incorrect answer results in loss of time - 5s
 const incorrectPenalty = 5;
+
+
+// looks at DISPLAY. start quiz function - hide welcome header and intro, show quiztime headser and first question.
+function quiz() {
+  var intro = document.querySelector(".intro");
+  var quiz = document.querySelector(".quiz");
+  var titleWelcome = document.querySelector("#Title1");
+  var titleQuiz = document.querySelector("#Title2");
+  
+  if (quiz.dataset = 'hidden'){
+  intro.style.display = 'none';
+  quiz.style.display = 'flex';
+  }
+
+  if (titleWelcome.dataset = 'hidden'){
+  titleWelcome.style.display = 'none';
+  titleQuiz.style.display = 'flex';
+  } 
+  
+    
+};
 
 function questionTime () {
   questionCounter=0;
@@ -61,31 +86,13 @@ function setTime() {
     timeEl.textContent = "Timer: " + secondsLeft;
     
     if (secondsLeft === 0) {
+
       clearInterval(timerInterval);
       timeEl.textContent = "You have run out of time!";
     }
   }, 1000);
 };
 
-// start quiz function - hide welcome header and intro, show quiztime headser and first question.
-function quiz() {
-  var intro = document.querySelector(".intro");
-  var quiz = document.querySelector(".quiz");
-  var titleWelcome = document.querySelector("#Title1");
-  var titleQuiz = document.querySelector("#Title2");
-  
-  if (quiz.dataset = 'hidden'){
-  intro.style.display = 'none';
-  quiz.style.display = 'flex';
-  }
-
-  if (titleWelcome.dataset = 'hidden'){
-  titleWelcome.style.display = 'none';
-  titleQuiz.style.display = 'flex';
-  } 
-  
-   
-};
 
 
 // var questionTitle = fullQuestions[0]["title"];
@@ -108,8 +115,8 @@ function quizTime() {
   console.log(quiz());
   console.log("quiz is working");
   questionTime();
-  console.log(question());
-  console.log("questions is working");
+  console.log(questionTime());
+  console.log("questionTime is working");
 };
 
 
