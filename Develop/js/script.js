@@ -2,10 +2,7 @@
 var startBtn = document.querySelector(".start-btn");
 var timeEl = document.querySelector(".time");
 var secondsLeft = 10; //FIXME: change time to 100
-// quiz vars
-const question = document.getElementById("question");
-const choices = Array.from(document.getElementsByClassName("choice"));
-console.log(choices);
+const incorrectPenalty = 5; // Incorrect answer results in loss of time - 5s
 
 // dispaly vars
 var intro = document.querySelector(".intro");
@@ -14,12 +11,15 @@ var titleWelcome = document.querySelector("#Title1");
 var titleQuiz = document.querySelector("#Title2");
 const results = document.querySelector("#results");
 const titleResults = document.querySelector("#Title3");
-// what is the currentQuestion
-let currentQuestion = {};
-// what number question is it?
-let questionCounter = 0;
-// how many questions are available?
-let availableQuestions = [];
+
+// quiz vars
+const question = document.getElementById("question");
+const choices = Array.from(document.getElementsByClassName("choice"));
+console.log(choices);
+let currentQuestion = {}; // what is the currentQuestion
+let questionCounter = 0; // what number question is it?
+let availableQuestions = []; // how many questions are available?
+
 // list of all questions, choices, and answers
 let fullQuestions = [
   {
@@ -43,9 +43,8 @@ let fullQuestions = [
     choice3: 'function {};',
     answer: 1,
   }
-];
-// Incorrect answer results in loss of time - 5s
-const incorrectPenalty = 5;
+]; 
+
 
 
 // looks at DISPLAY. start quiz function - hide welcome header and intro, show quiztime headser and first question.
