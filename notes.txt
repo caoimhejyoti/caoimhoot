@@ -35,3 +35,45 @@
             
             <!-- use the number box reveal task to reveal answer-->
           </div>
+
+
+
+
+Right answer initital code:
+
+
+// answer buttons
+var rightBtn = document.querySelector("#answer-right");
+var wrongBtn = document.querySelector("#answer-wrong");
+
+// right answers colour changed based on validitiy
+function rightAnswerReact(){
+  if (rightBtn.style.backgroundColor === "#0d324d"){
+  
+  rightBtn.style.backgroundColor = '#green';
+  // rightBtn.setProperty.style.color = '--background-color';
+  console.log("reading right answer");
+}
+}
+
+// FIXME:
+rightBtn.addEventListener("click", rightAnswerReact);
+console.log("test");
+// console.log(rightAnswerReact);
+
+
+wrong answer initital code:
+// wrong answers colour changed based on validitiy
+function wrongAnswerReact(){
+  wrongBtn.setProperty.style.backgroundColor ='--wrong-color';
+  wrongBtn.setProperty.style.color = '--background-color';
+}
+
+// FIXME:
+wrongBtn.addEventListener("click", wrongAnswerReact); 
+
+// local storage - storing end time
+function storeTime() {
+  localStorage.setItem("time", secondsLeft);
+  console.log("store time is working");
+}
