@@ -77,7 +77,23 @@ function getNewQuestion() {
     const answerNumber=choice.dataset['number'];
     choice.innerText=currentQuestion["choice" + answerNumber];
   })
-}
+  
+  availableQuestions.splice(questionIndex, 1);
+}  
+
+  choices.forEach (choice => {
+    choice.addEventListener('click', (e) => {
+      console.log(e.target);
+
+      
+
+
+      getNewQuestion();
+    })
+
+  })  
+  
+
 
 // FIXME: bug casuing it to continue counting after 0. count down timer function
 function setTime() {
