@@ -164,7 +164,11 @@ header #Title3{
 
 #results{
     display: none;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+
 }
 
 form{
