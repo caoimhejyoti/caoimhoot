@@ -64,9 +64,9 @@ var fullQuestions = [
   }
 ];
 
-var questionTitle = fullQuestions[0]["title"]
-var questionOptions = fullQuestions[0]["choices"]
-var questionAnswer = fullQuestions[0]["answer"]
+var questionTitle = fullQuestions[0]["title"];
+var questionOptions1 = Array.from(fullQuestions[0]["choices"]);
+var questionAnswer = fullQuestions[0]["answer"];
 //FIXME: from mod4.20 - needs to be for answers not questions.
 function questions() {
  
@@ -81,7 +81,7 @@ function questions() {
     element.setAttribute("data-state", "visible");
     element.textContent = questionTitle;
     element2.setAttribute("data-state", "visible");
-    element2.textContent = questionOptions;
+    element2.textContent = questionOptions1;
    
   }else {
     element.setAttribute("data-state", "hidden");
@@ -93,7 +93,10 @@ function questions() {
   const options = document.createElement();
   const answer = document.createElement();
 
- 
+ var button = document.createElement("BUTTON");
+
+
+ button.appendChild(text);
   // const node = document.createElement(questionTitle);
 
   // title.appendChild(node);
