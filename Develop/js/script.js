@@ -46,7 +46,7 @@ let fullQuestions = [
 ]; 
 
 // storage vars
-const finalScore = secondsLeft;
+
 
 // looks at DISPLAY. start quiz function - hide welcome header and intro, show quiztime headser and first question.
 function quiz() { 
@@ -153,6 +153,18 @@ function resultsPage(){
 
 function endQuiz(){
   
+}
+
+const finalScore = document.getElementById("#final-score");
+const initial = document.getElementById("initials");
+
+function submitresult(){
+  addEventListener("click",(e) =>{
+    localStorage.setItem("finalScore", finalScore.value);
+    localStorage.setItem("initials", initial.value);
+    
+
+  })
 }
 
 // master event listener attached to the start button.

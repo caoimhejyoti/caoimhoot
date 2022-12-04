@@ -8,55 +8,58 @@
     <link rel="stylesheet" href="Develop/css/rest.css">
     <link rel="stylesheet" href="Develop/css/style.css">
     <link rel="stylesheet" href="Develop/css/variables.css">
+    <link rel="stylesheet" href="Develop/css/highscore.css">
+
 </head>
 <body>
     <nav id="nav">
         <h2> <a href ="/index.html">Home</a> </h2>
         <h2 class="time">Timer</h2>
     </nav>
+
     <header>
         <h1 id="Title1">Highscores!</h1>
     </header>
 
+    <section class="intro">
+        <p>How did you do?</p>
+    </section>
 
-    <body>
-        <section class="intro">
-            <p>How did you do?</p>
+    <section class="highscores">
+        <section class="table">
+            <table>
+                <tr>
+                    <th>Rank</th>
+                    <th>Score</th>
+                </tr>
+                <tr>
+                    <td class="first-place">1</td>
+                    <td class = score id="first-score"></td>
+                </tr>
+                <tr>
+                    <td class="second-place">2</td>
+                    <td class = score id="second-score"></td>
+                </tr>
+                <tr>
+                    <td class="third-place">3</td>
+                    <td class = score id="third-score"></td>
+                </tr>
+                <tr>
+                    <td class="forth-place">4</td>
+                    <td class = score id="forth-score"></td>
+                </tr>
+                <tr>
+                </tr>
+                <tr>
+                </tr>
+                </tr>
+            </table>
         </section>
-        <section class="results">
-            <section class="table">
-                <table>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Score</th>
-                    </tr>
-                    <tr>
-                        <td class="first-place">1</td>
-                        <td class = score id="first-score"></td>
-                    </tr>
-                    <tr>
-                        <td class="second-place">2</td>
-                        <td class = score id="second-score"></td>
-                    </tr>
-                    <tr>
-                        <td class="third-place">3</td>
-                        <td class = score id="third-score"></td>
-                    </tr>
-                    <tr>
-                        <td class="forth-place">4</td>
-                        <td class = score id="forth-score"></td>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    </tr>
-                </table>
-            </section>
-        </section>
-        <section class="again">
-            <p>Think you can do better? Try again!</p>
-            <button class="start-btn">Try quiz again</button>
+    </section>
+    <section class="again">
+        <p>Think you can do better? Try again!</p>
+        <a href = "index.html"><button class="start-btn">Try quiz again</button></a>
+    </section>
 </body>
         
 <footer>

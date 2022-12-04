@@ -32,7 +32,7 @@ header #Title3{
     justify-content: center;
 }
 
-
+/* welcome page intro */
 .intro{
     display:flex;
     flex-direction: column;
@@ -47,16 +47,12 @@ header #Title3{
 }
 
 .intro button{
-    background-color: var(--highlight-color);
     padding: 25px;
     margin: 100px;
-    border-radius: 5px;
     font-size: 3vw;
 }
 
-/* .quiz-container{
-    display:none;
-} */
+/* quiz questions */
 .quiz{
     display: none;
     flex-direction: column;
@@ -80,9 +76,6 @@ header #Title3{
     text-align: center;
 }
 
-/* #question{
-    display: none;
-} */
 .choice-container:hover{
     background-color: var(--highlight-color);
     color: var(--dark-color);
@@ -103,7 +96,7 @@ header #Title3{
     padding: 5px;
     text-align: center;
 }
-.results {
+/* .results {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,43 +104,10 @@ header #Title3{
     padding: 10px;
     font-size: 2vw;
     margin: 10px;
-}
-
-.table table {
-    width: 50vw;
-}
+} */
 
 
-.table table,th, td{
-    border: 1px solid var(--highlight-color);
-    font-size: 2vw;
-    border-collapse: collapse;
-    
-
-}
-
-
-.again{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    font-size: 2vw;
-}
-
-.again p{
-    padding: 10px;
-}
-
-.again button{
-    background-color: var(--highlight-color);
-    padding: 25px;
-    margin: 100px;
-    border-radius: 5px;
-    font-size: 3vw;
-}
-
+/* changes to answer buttons */
 .correct{
     border: 5px solid;
     border-radius: 50px;
@@ -162,6 +122,7 @@ header #Title3{
     /* color: var(--background-color); */
 }
 
+/* show results form */
 #results{
     display: none;
     display: flex;
@@ -185,3 +146,4 @@ form{
     margin: 10px;
 
 }
+

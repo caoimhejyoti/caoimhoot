@@ -48,8 +48,12 @@ header {
 
 button{
     margin: 15 px;
-    border-radius: 50px;
+    border-radius: 100px;
     background-color: var(--dark-color);
     color: var(--background-color);
 }
 
+button:hover{
+    background-color: var(--highlight-color);
+    color: var(--dark-color);
+}
