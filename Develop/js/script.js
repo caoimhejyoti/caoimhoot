@@ -1,7 +1,7 @@
 // timer vars
 var startBtn = document.querySelector(".start-btn");
 var timeEl = document.querySelector(".time");
-var secondsLeft = 100;
+var secondsLeft = 5; //FIXME: change time to 100
 // quiz vars
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice"));
@@ -74,28 +74,40 @@ function getNewQuestion() {
   question.innerText = currentQuestion.question;
 
   choices.forEach (choice => {
-    const answerNumber=choice.dataset['number'];
-    choice.innerText=currentQuestion["choice" + answerNumber];
+    const chosenAnswerNumber=choice.dataset['number'];
+    choice.innerText=currentQuestion["choice" + chosenAnswerNumber];
   })
   
   availableQuestions.splice(questionIndex, 1);
 }  
 
-  choices.forEach (choice => {
-    choice.addEventListener('click', (e) => {
-      console.log(e.target);
 
-      
+choices.forEach (choice => {
+  choice.addEventListener('click', (e) => {
+    console.log(e.target);
+
+    const selectedChoice = e.target;
+    const selectedAnswer = selectedChoice.dataset["number"];
+    console.log(selectedAnswer);
+
+    if (selectedAnswer == availableQuestions.answer){
+      selectedChoice.setAttribute("style", "backgroundColor = #169873");
+      selectedChoice.style.borderColor = "#169873";
+
+    }else{
+      selectedChoice.style.backgroundColor = "#f25757";
+      selectedChoice.style.borderColor = "#f25757";
+    }
 
 
-      getNewQuestion();
-    })
+  });
 
-  })  
+
+})  
   
 
 
-// FIXME: bug casuing it to continue counting after 0. count down timer function
+// count down timer function
 function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
@@ -103,8 +115,8 @@ function setTime() {
     
     if (secondsLeft === 0) {
 
-      clearInterval(timerInterval);
       timeEl.textContent = "You have run out of time!";
+      clearInterval(timerInterval);
     }
   }, 1000);
 };
@@ -125,7 +137,7 @@ function setTime() {
 // master function - all functions combined for single eventListener.
 function quizTime() {
   setTime();
-  console.log(setTime());
+
   console.log("set time is working");
   quiz();
   console.log(quiz());

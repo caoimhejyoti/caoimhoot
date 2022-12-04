@@ -141,3 +141,17 @@ header #Title2{
     border-radius: 5px;
     font-size: 3vw;
 }
+
+.correct{
+    border: 5px solid;
+    border-radius: 50px;
+    background-color: var(--right-color);
+    color: var(--background-color);
+}
+
+.incorrect{
+    border: 5px solid;
+    border-radius: 50px;
+    background-color: var(--wrong-color);
+    color: var(--background-color);
+}
