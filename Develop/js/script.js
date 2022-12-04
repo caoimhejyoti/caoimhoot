@@ -45,24 +45,19 @@ let fullQuestions = [
   }
 ]; 
 
-
+// storage vars
+const finalScore = secondsLeft;
 
 // looks at DISPLAY. start quiz function - hide welcome header and intro, show quiztime headser and first question.
-function quiz() {
-
-  
+function quiz() { 
   if (quizDisplay.dataset = 'hidden'){
   intro.style.display = 'none';
   quizDisplay.style.display = 'flex';
   }
-
   if (titleWelcome.dataset = 'hidden'){
   titleWelcome.style.display = 'none';
   titleQuiz.style.display = 'flex';
-  } 
-  
-
-    
+  }     
 };
 
 function questionTime () {
@@ -72,52 +67,41 @@ function questionTime () {
 }
 
 function getNewQuestion() {
-
   if (availableQuestions.length == 0 || secondsLeft ==0){
     resultsPage();
   }
-
   // add question
   questionCounter++;
   const questionIndex = Math.floor(Math.random() *availableQuestions.length);
   currentQuestion= availableQuestions[questionIndex];
   question.innerText = currentQuestion.question;
-
   choices.forEach (choice => {
     const chosenAnswerNumber=choice.dataset['number'];
     choice.innerText=currentQuestion["choice" + chosenAnswerNumber];
   })
-  
-  availableQuestions.splice(questionIndex, 1);
+    availableQuestions.splice(questionIndex, 1);
 }  
 
 // identifying if answe is correct and changing colours to reflect choice.
 choices.forEach (choice => {
   choice.addEventListener('click', (e) => {
     console.log(e.target);
-
     const selectedChoice = e.target;
     const selectedAnswer = selectedChoice.dataset["number"];
-
-    console.log(selectedAnswer, currentQuestion.answer);
     
+    // always make correct answer green and only show red when selectedAnswer =incorrect
     var result = "incorrect";
       if (selectedAnswer == currentQuestion.answer) {
       result = "correct";
     }
-  
-    console.log(result);
 
     selectedChoice.classList.add(result);
+
     setTimeout(() => {
       selectedChoice.classList.remove(result);
       getNewQuestion();
     }, 1000)
-
-
   });
-
-
 })  
 
 // count down timer function
@@ -130,21 +114,18 @@ function setTime() {
 
       timeEl.textContent = "You have run out of time!";
       clearInterval(timerInterval);
-    }
+    }   
   }, 1000);
+
+  setTime.endTimer= endTimer;
+
+  function endTimer() {
+    clearInterval(timerInterval);
+  }
 };
 
-// function penalty = 
 
-// function incorrectPenalty() {
-
-//   const penalty = 5;
-//   if (result === "incorrect"){
-//     var newSecondsLeft = secondsLeft - penalty;
-//     secondsLeft = newSecondsLeft;
-//   }}
-
-// master function - all functions combined for single eventListener.
+// master function.
 function quizTime() {
   setTime();
   console.log("set time is working");
@@ -154,27 +135,26 @@ function quizTime() {
   questionTime();
   console.log(questionTime());
   console.log("questionTime is working");
+  // endQuestions();
+  // console.log(endQuestions());
 };
 
 // display for results post quiz
 function resultsPage(){
-
-
   if (results.dataset = 'hidden'){
     quizDisplay.style.display = 'none';
     results.style.display = 'flex';
-    }
-    if (titleWelcome.dataset = 'hidden'){
+  }
+  if (titleWelcome.dataset = 'hidden'){
       titleQuiz.style.display = 'none';
       titleResults.style.display = 'flex';
-      } 
+  } 
 }
 
-// using local storage to create a score
-
+function endQuiz(){
+  
+}
 
 // master event listener attached to the start button.
-
-
 startBtn.addEventListener("click", quizTime);
 
