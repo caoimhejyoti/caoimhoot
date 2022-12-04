@@ -21,7 +21,7 @@ header #Title1 {
 }
 
 header #Title2{
-    display:flex;
+    display:none;
     align-items: center;
     justify-content: center;
 }
@@ -48,8 +48,11 @@ header #Title2{
     font-size: 3vw;
 }
 
+/* .quiz-container{
+    display:none;
+} */
 .quiz{
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -71,6 +74,9 @@ header #Title2{
     text-align: center;
 }
 
+/* #question{
+    display: none;
+} */
 .choice-container:hover{
     background-color: var(--highlight-color);
     color: var(--dark-color);

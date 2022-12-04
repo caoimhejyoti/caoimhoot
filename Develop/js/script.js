@@ -35,7 +35,7 @@ let fullQuestions = [
 // Incorrect answer results in loss of time - 5s
 const incorrectPenalty = 5;
 
-function question () {
+function questionTime () {
   questionCounter=0;
   availableQuestions= [...fullQuestions];
   getNewQuestion();
@@ -46,10 +46,13 @@ function getNewQuestion() {
   questionCounter++;
   const questionIndex = Math.floor(Math.random() *availableQuestions.length);
   currentQuestion= availableQuestions[questionIndex];
-  question.innerText=currentQuestion.question;
+  question.innerText = currentQuestion.question;
 
-
-
+  choices.forEach (choice => {
+    const answerNumber=choice.dataset['number'];
+    choice.innerText=currentQuestion["choice" + answerNumber];
+  })
+}
 
 // FIXME: bug casuing it to continue counting after 0. count down timer function
 function setTime() {
@@ -70,20 +73,24 @@ function quiz() {
   var quiz = document.querySelector(".quiz");
   var titleWelcome = document.querySelector("#Title1");
   var titleQuiz = document.querySelector("#Title2");
-   
-  if (quiz.style.display = 'hidden'){
+  
+  if (quiz.dataset = 'hidden'){
   intro.style.display = 'none';
+  quiz.style.display = 'flex';
   }
-  // if (titleWelcome.style.display = 'hidden') {
-  // titleQuiz.style.display = 'none';
-  // }
+
+  if (titleWelcome.dataset = 'hidden'){
+  titleWelcome.style.display = 'none';
+  titleQuiz.style.display = 'flex';
+  } 
+  
    
 };
 
 
-var questionTitle = fullQuestions[0]["title"];
-var questionOptions1 = Array.from(document.getElementsByClassName["choice"]);
-var questionAnswer = fullQuestions[0]["answer"];
+// var questionTitle = fullQuestions[0]["title"];
+// var questionOptions1 = Array.from(document.getElementsByClassName["choice"]);
+// var questionAnswer = fullQuestions[0]["answer"];
 //FIXME: from mod4.20 - needs to be for answers not questions.
 
 
@@ -100,8 +107,8 @@ function quizTime() {
   quiz();
   console.log(quiz());
   console.log("quiz is working");
-  questions();
-  console.log(questions());
+  questionTime();
+  console.log(question());
   console.log("questions is working");
 };
 
