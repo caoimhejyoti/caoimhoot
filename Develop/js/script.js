@@ -88,16 +88,21 @@ choices.forEach (choice => {
 
     const selectedChoice = e.target;
     const selectedAnswer = selectedChoice.dataset["number"];
-    console.log(selectedAnswer);
 
-    if (selectedAnswer == availableQuestions.answer){
-      selectedChoice.setAttribute("style", "backgroundColor = #169873");
-      selectedChoice.style.borderColor = "#169873";
-
-    }else{
-      selectedChoice.style.backgroundColor = "#f25757";
-      selectedChoice.style.borderColor = "#f25757";
+    console.log(selectedAnswer, currentQuestion.answer);
+    
+    var result = "incorrect";
+      if (selectedAnswer == currentQuestion.answer) {
+      result = "correct";
     }
+  
+    console.log(result);
+
+    selectedChoice.classList.add(result);
+    setTimeout(() => {
+      selectedChoice.classList.remove(result);
+      getNewQuestion();
+    }, 1000)
 
 
   });

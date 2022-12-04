@@ -152,6 +152,6 @@ header #Title2{
 .incorrect{
     border: 5px solid;
     border-radius: 50px;
-    background-color: var(--wrong-color);
-    color: var(--background-color);
+    background-color: #f25757;
+    /* color: var(--background-color); */
 }
