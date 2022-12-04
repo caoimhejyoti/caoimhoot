@@ -26,6 +26,12 @@ header #Title2{
     justify-content: center;
 }
 
+header #Title3{
+    display:none;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .intro{
     display:flex;
@@ -154,4 +160,24 @@ header #Title2{
     border-radius: 50px;
     background-color: #f25757;
     /* color: var(--background-color); */
+}
+
+#results{
+    display: none;
+    justify-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 2vw;
+}
+
+#label, #initials, #submit{
+    padding: 10px;
+    margin: 10px;
+
 }

@@ -17,6 +17,7 @@
     <header>
       <h1 id="Title1" data-state="hidden">Welcome to Caoimhoot!</h1>
       <h1 id="Title2" data-state = "hidden">Quiz time</h1>
+      <h1 id="Title3" data-state = "hidden">Results</h1>
     </header>
 
     <body>
@@ -27,6 +28,7 @@
         <p>Take the quiz - if you dare!</p>
         <button class="start-btn">Start quiz</button>
       </section>
+      
       <section class="quiz" data-state="hidden">
         <h2 id=question>Question 1</h2>
         <!-- click button and reveals quiz container -->
@@ -42,6 +44,14 @@
           </div>
         </div>
       </section>
+
+      <section id="results" data-state="hidden">
+        <form> 
+            <label id = lable for="initials">Enter Initials</label>
+            <input type="text" id="initials" placeholder="Enter Initials" />
+            <input type="submit" id = submit value="Submit" />
+        </form>
+    </section>
     </body>
 
 

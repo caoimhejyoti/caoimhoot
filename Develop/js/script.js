@@ -1,11 +1,19 @@
 // timer vars
 var startBtn = document.querySelector(".start-btn");
 var timeEl = document.querySelector(".time");
-var secondsLeft = 5; //FIXME: change time to 100
+var secondsLeft = 10; //FIXME: change time to 100
 // quiz vars
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice"));
 console.log(choices);
+
+// dispaly vars
+var intro = document.querySelector(".intro");
+var quizDisplay = document.querySelector(".quiz");
+var titleWelcome = document.querySelector("#Title1");
+var titleQuiz = document.querySelector("#Title2");
+const results = document.querySelector("#results");
+const titleResults = document.querySelector("#Title3");
 // what is the currentQuestion
 let currentQuestion = {};
 // what number question is it?
@@ -42,14 +50,11 @@ const incorrectPenalty = 5;
 
 // looks at DISPLAY. start quiz function - hide welcome header and intro, show quiztime headser and first question.
 function quiz() {
-  var intro = document.querySelector(".intro");
-  var quiz = document.querySelector(".quiz");
-  var titleWelcome = document.querySelector("#Title1");
-  var titleQuiz = document.querySelector("#Title2");
+
   
-  if (quiz.dataset = 'hidden'){
+  if (quizDisplay.dataset = 'hidden'){
   intro.style.display = 'none';
-  quiz.style.display = 'flex';
+  quizDisplay.style.display = 'flex';
   }
 
   if (titleWelcome.dataset = 'hidden'){
@@ -57,6 +62,7 @@ function quiz() {
   titleQuiz.style.display = 'flex';
   } 
   
+
     
 };
 
@@ -67,6 +73,11 @@ function questionTime () {
 }
 
 function getNewQuestion() {
+
+  if (availableQuestions.length == 0 || secondsLeft ==0){
+    resultsPage();
+  }
+
   // add question
   questionCounter++;
   const questionIndex = Math.floor(Math.random() *availableQuestions.length);
@@ -81,7 +92,7 @@ function getNewQuestion() {
   availableQuestions.splice(questionIndex, 1);
 }  
 
-
+// identifying if answe is correct and changing colours to reflect choice.
 choices.forEach (choice => {
   choice.addEventListener('click', (e) => {
     console.log(e.target);
@@ -109,8 +120,6 @@ choices.forEach (choice => {
 
 
 })  
-  
-
 
 // count down timer function
 function setTime() {
@@ -126,23 +135,19 @@ function setTime() {
   }, 1000);
 };
 
+// function penalty = 
 
+// function incorrectPenalty() {
 
-// var questionTitle = fullQuestions[0]["title"];
-// var questionOptions1 = Array.from(document.getElementsByClassName["choice"]);
-// var questionAnswer = fullQuestions[0]["answer"];
-//FIXME: from mod4.20 - needs to be for answers not questions.
-
-
-
-
-
-
+//   const penalty = 5;
+//   if (result === "incorrect"){
+//     var newSecondsLeft = secondsLeft - penalty;
+//     secondsLeft = newSecondsLeft;
+//   }}
 
 // master function - all functions combined for single eventListener.
 function quizTime() {
   setTime();
-
   console.log("set time is working");
   quiz();
   console.log(quiz());
@@ -152,7 +157,19 @@ function quizTime() {
   console.log("questionTime is working");
 };
 
+// display for results post quiz
+function resultsPage(){
 
+
+  if (results.dataset = 'hidden'){
+    quizDisplay.style.display = 'none';
+    results.style.display = 'flex';
+    }
+    if (titleWelcome.dataset = 'hidden'){
+      titleQuiz.style.display = 'none';
+      titleResults.style.display = 'flex';
+      } 
+}
 
 // using local storage to create a score
 
@@ -161,5 +178,4 @@ function quizTime() {
 
 
 startBtn.addEventListener("click", quizTime);
-
 
