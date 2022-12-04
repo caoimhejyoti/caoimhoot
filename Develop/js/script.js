@@ -68,8 +68,10 @@ function questionTime () {
 
 function getNewQuestion() {
   if (availableQuestions.length == 0 || secondsLeft ==0){
-    resultsPage();
+    localStorage.setItem("currentScore", finalScore);
+    // resultsPage();
   }
+  
   // add question
   questionCounter++;
   const questionIndex = Math.floor(Math.random() *availableQuestions.length);
@@ -93,6 +95,7 @@ choices.forEach (choice => {
     var result = "incorrect";
       if (selectedAnswer == currentQuestion.answer) {
       result = "correct";
+      secondsLeft = secondsLeft - 5; //FIXME: not removing time as expected.
     }
 
     selectedChoice.classList.add(result);
@@ -155,18 +158,27 @@ function endQuiz(){
   
 }
 
-const finalScore = document.getElementById("#final-score");
+// master event listener attached to the start button.
+startBtn.addEventListener("click", quizTime);
+
+let finalScore = document.getElementById("#final-score");
 const initial = document.getElementById("initials");
+const submitBtn = document.getElementById("#submit");
+const currentScore = localStorage.getItem("currentScore");
+finalScore = secondsLeft;
+// FIXME: put final score into the text value of #final-score in the html.
+// need to store the final score in localStorage (seconds left). 
 
 function submitresult(){
-  addEventListener("click",(e) =>{
+  submitBtn.disabled = !initial.value; //FIXME: not working for some reason
+
+  initial.addEventListener("click",(e) =>{
     localStorage.setItem("finalScore", finalScore.value);
     localStorage.setItem("initials", initial.value);
-    
+
 
   })
 }
 
-// master event listener attached to the start button.
-startBtn.addEventListener("click", quizTime);
+
 

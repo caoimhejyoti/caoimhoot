@@ -54,6 +54,7 @@ button{
 }
 
 button:hover{
+    cursor: pointer;
     background-color: var(--highlight-color);
     color: var(--dark-color);
 }

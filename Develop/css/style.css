@@ -147,3 +147,9 @@ form{
 
 }
 
+#submit{
+    color: var(--background-color);
+}
+#submit:hover{
+    color: var(----dark-color);
+}
