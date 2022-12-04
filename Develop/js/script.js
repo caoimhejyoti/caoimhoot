@@ -16,29 +16,33 @@ var secondsLeft = 100;
 // }
 // }
 
-// count down timer function
+// FIXME: bug casuing it to continue counting after 0. count down timer function
 function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = "Timer: " + secondsLeft;
     
+    if (secondsLeft === 0) {
+      clearInterval(timerInterval);
+      timeEl.textContent = "You have run out of time!";
+    }
   }, 1000);
-  if (secondsLeft === 0) {
-    clearInterval(timerInterval);
-    timeEl.textContent = "You have run out of time!";
-  }
 };
 
 // start quiz function - hide welcome header and intro, show quiztime headser and first question.
 function quiz() {
   var intro = document.querySelector(".intro");
   var quiz = document.querySelector(".quiz");
+  var titleWelcome = document.querySelector("#Title1");
+  var titleQuiz = document.querySelector("#Title2");
    
-  if (quiz.style.display = 'none');
+  if (quiz.style.display = 'hidden'){
   intro.style.display = 'none';
-  
-  if (intro.style.display = 'none');
-  quiz.style.display = 'none';  
+  }
+  // if (titleWelcome.style.display = 'hidden') {
+  // titleQuiz.style.display = 'none';
+  // }
+   
 };
 
 // list of all questions, choices, and answers
@@ -60,35 +64,43 @@ var fullQuestions = [
   }
 ];
 
+var questionTitle = fullQuestions[0]["title"]
+var questionOptions = fullQuestions[0]["choices"]
+var questionAnswer = fullQuestions[0]["answer"]
 //FIXME: from mod4.20 - needs to be for answers not questions.
 function questions() {
  
+
   var element = document.querySelector(".question");
+  var element2 = document.querySelector(".options");
   
   var state = element.getAttribute("data-state");
-  
+  var state2 = element2.getAttribute("data-state");
+
   if (state === "hidden"){
     element.setAttribute("data-state", "visible");
-  
-    element.textContent = element.getAttribute("data-number");
-    
+    element.textContent = questionTitle;
+    element2.setAttribute("data-state", "visible");
+    element2.textContent = questionOptions;
+   
   }else {
     element.setAttribute("data-state", "hidden");
     element.textContent = "";
   };
-  
-  var questionTitle = fullQuestions[0]["title"]
-  var querstionQuestion = fullQuestions[0]["choices"]
-  var questionAnswer = fullQuestions[0]["answer"]
 
-  const title = document.createElement(h3);
-  const node = document.createElement(questionTitle);
 
-  title.appendChild(node);
-  element.appendChild(title);
+  const title = document.createElement();
+  const options = document.createElement();
+  const answer = document.createElement();
+
+ 
+  // const node = document.createElement(questionTitle);
+
+  // title.appendChild(node);
+  // element.appendChild(title);
 // add for loop - 
 
-  console.log(fullQuestions[0]["title"]);
+
 
   
 };
