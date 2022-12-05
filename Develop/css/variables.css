@@ -12,20 +12,28 @@ html {
 }
 
 h1{
-    font-size: 6vw;
+    font-size: 2rem;
     
 }
 
 h2{
-    font-size: 4vw;
+    font-size: 1.5rem;
     
 }
 
 h3{
-    font-size: 3vw;
+    font-size: 1.2rem;
     
 }
 
+h4{
+    font-size: 1rem;  
+}
+
+p{
+    font-size: 1.2
+    rem;
+}
 
 body {
     background-color: var(--background-color);
@@ -58,3 +66,17 @@ button:hover{
     background-color: var(--highlight-color);
     color: var(--dark-color);
 }
+
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0px;
+    padding: 20px 0px;
+    background-color: var(--dark-color);
+    color: var(--background-color);
+    
+}
+
