@@ -58,7 +58,8 @@ https://stackoverflow.com/questions/63307047/how-to-add-and-subtract-time-from-a
 https://www.w3schools.com/jsref/jsref_foreach.asp
 https://www.w3schools.com/jsref/met_storage_setitem.asp
 https://www.w3schools.com/js/js_htmldom_nodes.asp
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Deprecated_expression_closures#:~:text=The%20JavaScript%20warning%20%22expression%20closures,the%20warning%20message%20is%20obsolete.
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Deprecated_expression_closures#:~:text=The%20JavaScript%20warning%20%22expression%20closures,the%20warning%20message%20is%20obsolete
+https://stackoverflow.com/questions/27156483/changing-image-src-on-hover
 
 ## License
 Please refer to the LICENSE in the repo.
