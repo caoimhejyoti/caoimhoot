@@ -9,7 +9,7 @@ var intro = document.querySelector(".intro");
 var quizDisplay = document.querySelector(".quiz");
 var titleWelcome = document.querySelector("#Title1");
 var titleQuiz = document.querySelector("#Title2");
-const results = document.querySelector("#results");
+const results = document.querySelector("form");
 const titleResults = document.querySelector("#Title3");
 
 // quiz vars
@@ -19,6 +19,13 @@ console.log(choices);
 let currentQuestion = {}; // what is the currentQuestion
 let questionCounter = 0; // what number question is it?
 let availableQuestions = []; // how many questions are available?
+
+  // if (results.dataset = 'hidden'){
+  // intro.style.display = 'flex';
+  // resuts.style.display = 'none';
+  // };
+    
+
 
 // list of all questions, choices, and answers
 let fullQuestions = [
@@ -69,10 +76,10 @@ function questionTime () {
 function getNewQuestion() {
   if (availableQuestions.length == 0 || secondsLeft ==0){
     localStorage.setItem("currentScore", finalScore);
-    // resultsPage();
-  }
-  
-  // add question
+    resultsPage();
+
+  }else{
+    // add question
   questionCounter++;
   const questionIndex = Math.floor(Math.random() *availableQuestions.length);
   currentQuestion= availableQuestions[questionIndex];
@@ -81,7 +88,8 @@ function getNewQuestion() {
     const chosenAnswerNumber=choice.dataset['number'];
     choice.innerText=currentQuestion["choice" + chosenAnswerNumber];
   })
-    availableQuestions.splice(questionIndex, 1);
+    availableQuestions.splice(questionIndex, 1);}
+    
 }  
 
 // identifying if answe is correct and changing colours to reflect choice.
@@ -95,7 +103,7 @@ choices.forEach (choice => {
     var result = "incorrect";
       if (selectedAnswer == currentQuestion.answer) {
       result = "correct";
-      secondsLeft = secondsLeft - 5; //FIXME: not removing time as expected.
+      // secondsLeft = secondsLeft - 5; //FIXME: not removing time as expected.
     }
 
     selectedChoice.classList.add(result);
