@@ -52,6 +52,28 @@ let fullQuestions = [
   }
 ]; 
 
+// count down timer function
+function setTime() {
+  var timerInterval = setInterval(function () {
+    secondsLeft--;
+    timeEl.textContent = "Timer: " + secondsLeft;
+    
+    if (secondsLeft === 0) {
+
+      timeEl.textContent = "You have run out of time!";
+      clearInterval(timerInterval);
+    }   
+  }, 1000);
+
+  setTime.endTimer= endTimer;
+  
+  function endTimer() {
+    clearInterval(timerInterval);
+    timeEl.textContent = "Quiz has ended!"
+  }
+};
+
+
 // storage vars
 
 
@@ -75,21 +97,26 @@ function questionTime () {
 
 function getNewQuestion() {
   if (availableQuestions.length == 0 || secondsLeft ==0){
-    localStorage.setItem("currentScore", finalScore);
     resultsPage();
+    setTime.endTimer();
+    console.log(secondsLeft + " seconds remaining");
+    localStorage.setItem("currentScore", finalScore);
 
   }else{
     // add question
-  questionCounter++;
-  const questionIndex = Math.floor(Math.random() *availableQuestions.length);
-  currentQuestion= availableQuestions[questionIndex];
-  question.innerText = currentQuestion.question;
-  choices.forEach (choice => {
-    const chosenAnswerNumber=choice.dataset['number'];
-    choice.innerText=currentQuestion["choice" + chosenAnswerNumber];
-  })
-    availableQuestions.splice(questionIndex, 1);}
+    questionCounter++;
+    const questionIndex = Math.floor(Math.random() *availableQuestions.length);
+    currentQuestion= availableQuestions[questionIndex];
+    question.innerText = currentQuestion.question;
+
+    choices.forEach (choice => {
+      const chosenAnswerNumber=choice.dataset['number'];
+      choice.innerText=currentQuestion["choice" + chosenAnswerNumber];
+    })
     
+    availableQuestions.splice(questionIndex, 1);
+  }
+
 }  
 
 // identifying if answe is correct and changing colours to reflect choice.
@@ -115,25 +142,6 @@ choices.forEach (choice => {
   });
 })  
 
-// count down timer function
-function setTime() {
-  var timerInterval = setInterval(function () {
-    secondsLeft--;
-    timeEl.textContent = "Timer: " + secondsLeft;
-    
-    if (secondsLeft === 0) {
-
-      timeEl.textContent = "You have run out of time!";
-      clearInterval(timerInterval);
-    }   
-  }, 1000);
-
-  setTime.endTimer= endTimer;
-
-  function endTimer() {
-    clearInterval(timerInterval);
-  }
-};
 
 
 // master function.
@@ -146,8 +154,7 @@ function quizTime() {
   questionTime();
   console.log(questionTime());
   console.log("questionTime is working");
-  // endQuestions();
-  // console.log(endQuestions());
+ 
 };
 
 // display for results post quiz
@@ -167,7 +174,6 @@ function endQuiz(){
 }
 
 // master event listener attached to the start button.
-startBtn.addEventListener("click", quizTime);
 
 let finalScore = document.getElementById("#final-score");
 const initial = document.getElementById("initials");
@@ -179,12 +185,12 @@ finalScore = secondsLeft;
 
 function submitresult(){
   submitBtn.disabled = !initial.value; //FIXME: not working for some reason
-
+  
   initial.addEventListener("click",(e) =>{
     localStorage.setItem("finalScore", finalScore.value);
     localStorage.setItem("initials", initial.value);
-
-
+    // currentScore.textContent= finalScore.value;
+    
   })
 }
 
@@ -193,7 +199,10 @@ function submitresult(){
 // const gitBtn = document.getElementsByClassName('github');
 
 // function changeImgSrc(){
-//   gitBtn.src = 'Develop/assets/img/GitHub-Mark-120px-plus.png';
-// }
-
-// gitBtn.addEventListener('mouseover', changeImgSrc);
+  //   gitBtn.src = 'Develop/assets/img/GitHub-Mark-120px-plus.png';
+  // }
+  
+  // gitBtn.addEventListener('mouseover', changeImgSrc);
+  
+  
+startBtn.addEventListener("click", quizTime);
