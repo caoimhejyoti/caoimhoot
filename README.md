@@ -44,16 +44,26 @@ This quiz game was built to further cement my lerarning in JS and Web APIs.
 FIXME: need to provide link.
 
 ## Usage
+User is welcomed to Caoimhoot.
 
 ![Caoimhoot Welcome Page screenshot](Develop/assets/img/welcome-screenshote.png)
 
+
+
+Each question is multiple choice with three options. The timer will count down - the faster the player the higher the score.
+
 ![Caoimhe Quiz screenshot](Develop/assets/img/quiz-screenshot.png)
+
+
+Once you have finished the quiz, you can submit your inititals to be added to the highscores.
 
 ![Caoimhe results page screenshot](Develop/assets/img/results-page-%20screenshot.png)
 
+
+The highscores page shows the tally of resutls. It also asks if you want to play again, with a link returning you to the homepage. Future versions will be able to link directly into the first question. 
+
 ![Caoimhe highscores page screenshot](Develop/assets/img/highscores-screenshot.png)
 
-FIXME: need to provide brief descriptions.
 
 ## Credits
 ### Sources
