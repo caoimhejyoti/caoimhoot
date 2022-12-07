@@ -170,72 +170,22 @@ function resultsPage(){
   } 
 }
 
+//FIXME: not working for some reason. Can still submit without filling out inititals.
 function submitresult(){
-  submitBtn.disabled == ""; //FIXME: not working for some reason
-  
-  submitBtn.addEventListener("click",(e) =>{
-    // localStorage.setItem("finalScore", finalScore.value);
-    localStorage.setItem("player", initial.value);
-    currentScore.textContent= secondsLeft.value;
-    document.locatiion.href = "highscores.html";
-  })
+  submitBtn.disabled == null; 
 }
 
-// let highscore = ""
-let player = ""
-let firstPlace = document.getElementById("first-score");
-let secondPlace = document.getElementById("second-score");
-let thirdPlace = document.getElementById("third-score");
-let fourthPlace = document.getElementById("fourth-score");
+// COMPLETE! submiting results and connecting to Highscore HTML page.
+submitBtn.addEventListener("click",(e) =>{
+  event.preventDefault();
+  console.log("submit button works");
+  localStorage.setItem("player", initial.value);
+  currentScore.textContent= secondsLeft.value;
+  document.location.href = "highscores.html";
+})
 
-let highscoreArray = [
-  
-  {
-    rank: "First Place",
-    score: "",
-    initial: "",
-  },
-  {
-    rank: "Second Place",
-    score: "",
-    initial: "",
-  },
-  {
-    rank: "Third Place",
-    score: "",
-    initial: "",
-  }
-];
 
-currentResult = localStorage.getItem ("secondsLeft");
-currentPlayer = localStorage.getItem ("initial");
 
-currentGame = [
-  {
-    rank: "",
-    score: currentResult,
-    initial: currentPlayer,
-  }
-]
-
-function setHighScore(){
-
-  if (currentGame[1]>=highscoreArray[0][1]){
-    highscoreArray[0][1].value=currentGame[1].value;
-    highscoreArray[0][2].value=currentGame[2].value;
-  }else if (currentGame[1]>=highscoreArray[1][1]){
-    highscoreArray[1][1].value=currentGame[1].value;
-    highscoreArray[1][2].value=currentGame[2].value;
-  }else if (currentGame[1]>=highscoreArray[2][1]){
-    highscoreArray[2][1].value=currentGame[1].value;
-    highscoreArray[2][2].value=currentGame[2].value;
-  }else if (currentGame[1]>=highscoreArray[3][1]){
-    highscoreArray[3][1]=currentGame[1].value;
-    highscoreArray[3][2]=currentGame[2].value;
-  }else
-  document.getElementsByClassName(better-luck).textContent= "Try again to make it onto the Leaderboard!";
-    
-}
 // const gitBtn = document.getElementsByClassName('github');
 
 // function changeImgSrc(){
