@@ -36,7 +36,6 @@ p{
 }
 
 body {
-    min-height: 100vh;
     background-color: var(--background-color);
     color: var(--dark-color);
     font-size: 16px;
