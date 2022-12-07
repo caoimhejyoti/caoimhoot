@@ -20,11 +20,7 @@ let currentQuestion = {}; // what is the currentQuestion
 let questionCounter = 0; // what number question is it?
 let availableQuestions = []; // how many questions are available?
 
-  // if (results.dataset = 'hidden'){
-  // intro.style.display = 'flex';
-  // resuts.style.display = 'none';
-  // };
-    
+
 
 
 // list of all questions, choices, and answers
@@ -62,6 +58,7 @@ function setTime() {
 
       timeEl.textContent = "You have run out of time!";
       clearInterval(timerInterval);
+      endTimer();
     }   
   }, 1000);
 
@@ -70,6 +67,7 @@ function setTime() {
   function endTimer() {
     clearInterval(timerInterval);
     timeEl.textContent = "Quiz has ended!"
+    resultsPage(); // FIXME: this is not working - needs you to press on answer to go to results and then stores results.
   }
 };
 
@@ -160,7 +158,7 @@ function quizTime() {
  
 };
 
-// display for results post quiz
+// WORKING AS EXPECTED. Display for results post quiz
 function resultsPage(){
   if (results.dataset = 'hidden'){
     quizDisplay.style.display = 'none';
