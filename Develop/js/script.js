@@ -100,9 +100,8 @@ function getNewQuestion() {
     setTime.endTimer();
     console.log(secondsLeft + " seconds remaining");
     localStorage.setItem("currentScore", secondsLeft);
-
     finalScore.textContent = secondsLeft;
-    return;
+    
 
   }else{
     // add question
@@ -170,22 +169,36 @@ function resultsPage(){
   } 
 }
 
-finalScore = secondsLeft;
+// finalScore = secondsLeft;
 // FIXME: put final score into the text value of #final-score in the html.
 // need to store the final score in localStorage (seconds left). 
 
 function submitresult(){
   // submitBtn.disabled = initial.value; //FIXME: not working for some reason
   
-  initial.addEventListener("click",(e) =>{
+  submitBtn.addEventListener("click",(e) =>{
     localStorage.setItem("finalScore", finalScore.value);
-    localStorage.setItem("initials", initial.value);
-    // currentScore.textContent= finalScore.value;
+    localStorage.setItem("player", initial.value);
+    currentScore.textContent= secondsLeft.value;
     
   })
 }
 
-// keep event listeners at the end 
+let highscore = ""
+let player = ""
+let firstPlace = document.getElementById("first-score");
+let secondPlace = document.getElementById("second-score");
+let thirdPlace = document.getElementById("third-score");
+let fourthPlace = document.getElementById("fourth-score");
+
+let highscoreArray = [firstPlace, secondPlace, thirdPlace, fourthPlace];
+
+// function highscore(){
+//   highscore.textContent = currentScore;
+
+//   for (let i = 0; i > highscoreArray.length; i++) {
+
+//   }
 
 // const gitBtn = document.getElementsByClassName('github');
 
