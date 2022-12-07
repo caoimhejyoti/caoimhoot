@@ -45,7 +45,15 @@ FIXME: need to provide link.
 
 ## Usage
 
-FIXME: need to provide screenshots and brief descriptions.
+![Caoimhoot Welcome Page screenshot](Develop/assets/img/welcome-screenshote.png)
+
+![Caoimhe Quiz screenshot](Develop/assets/img/quiz-screenshot.png)
+
+![Caoimhe results page screenshot](Develop/assets/img/results-page-%20screenshot.png)
+
+![Caoimhe highscores page screenshot](Develop/assets/img/highscores-screenshot.png)
+
+FIXME: need to provide brief descriptions.
 
 ## Credits
 ### Sources
