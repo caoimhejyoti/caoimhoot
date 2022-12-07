@@ -141,8 +141,8 @@ form{
     font-size: 1.2rem;
 }
 
-#label, #initials, #submit{
-    padding: 10px;
+#label, #player, #submit{
+    padding: 20px;
     margin: 10px;
 
 }

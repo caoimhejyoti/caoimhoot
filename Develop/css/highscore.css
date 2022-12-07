@@ -40,3 +40,8 @@ align-items: center;
     font-size: 3vw;
 }
 
+.better-luck{
+    display: flex;
+    flex-direction: column;
+    
+}

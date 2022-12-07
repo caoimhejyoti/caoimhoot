@@ -100,6 +100,7 @@ function getNewQuestion() {
     setTime.endTimer();
     console.log(secondsLeft + " seconds remaining");
     localStorage.setItem("currentScore", secondsLeft);
+    // displaying results on results page
     finalScore.textContent = secondsLeft;
     
 
@@ -169,37 +170,72 @@ function resultsPage(){
   } 
 }
 
-// finalScore = secondsLeft;
-// FIXME: put final score into the text value of #final-score in the html.
-// need to store the final score in localStorage (seconds left). 
-
 function submitresult(){
-  // submitBtn.disabled = initial.value; //FIXME: not working for some reason
+  submitBtn.disabled == ""; //FIXME: not working for some reason
   
   submitBtn.addEventListener("click",(e) =>{
-    localStorage.setItem("finalScore", finalScore.value);
+    // localStorage.setItem("finalScore", finalScore.value);
     localStorage.setItem("player", initial.value);
     currentScore.textContent= secondsLeft.value;
-    
+    document.locatiion.href = "highscores.html";
   })
 }
 
-let highscore = ""
+// let highscore = ""
 let player = ""
 let firstPlace = document.getElementById("first-score");
 let secondPlace = document.getElementById("second-score");
 let thirdPlace = document.getElementById("third-score");
 let fourthPlace = document.getElementById("fourth-score");
 
-let highscoreArray = [firstPlace, secondPlace, thirdPlace, fourthPlace];
+let highscoreArray = [
+  
+  {
+    rank: "First Place",
+    score: "",
+    initial: "",
+  },
+  {
+    rank: "Second Place",
+    score: "",
+    initial: "",
+  },
+  {
+    rank: "Third Place",
+    score: "",
+    initial: "",
+  }
+];
 
-// function highscore(){
-//   highscore.textContent = currentScore;
+currentResult = localStorage.getItem ("secondsLeft");
+currentPlayer = localStorage.getItem ("initial");
 
-//   for (let i = 0; i > highscoreArray.length; i++) {
+currentGame = [
+  {
+    rank: "",
+    score: currentResult,
+    initial: currentPlayer,
+  }
+]
 
-//   }
+function setHighScore(){
 
+  if (currentGame[1]>=highscoreArray[0][1]){
+    highscoreArray[0][1].value=currentGame[1].value;
+    highscoreArray[0][2].value=currentGame[2].value;
+  }else if (currentGame[1]>=highscoreArray[1][1]){
+    highscoreArray[1][1].value=currentGame[1].value;
+    highscoreArray[1][2].value=currentGame[2].value;
+  }else if (currentGame[1]>=highscoreArray[2][1]){
+    highscoreArray[2][1].value=currentGame[1].value;
+    highscoreArray[2][2].value=currentGame[2].value;
+  }else if (currentGame[1]>=highscoreArray[3][1]){
+    highscoreArray[3][1]=currentGame[1].value;
+    highscoreArray[3][2]=currentGame[2].value;
+  }else
+  document.getElementsByClassName(better-luck).textContent= "Try again to make it onto the Leaderboard!";
+    
+}
 // const gitBtn = document.getElementsByClassName('github');
 
 // function changeImgSrc(){
