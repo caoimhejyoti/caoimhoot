@@ -36,6 +36,7 @@ p{
 }
 
 body {
+    min-height: 100vh;
     background-color: var(--background-color);
     color: var(--dark-color);
     font-size: 16px;
@@ -69,11 +70,14 @@ button:hover{
 
 
 footer{
+    position:fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10px 0px;
     padding: 20px 0px;
     background-color: var(--dark-color);
     color: var(--background-color);
