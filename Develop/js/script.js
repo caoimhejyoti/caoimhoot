@@ -20,10 +20,13 @@ let currentQuestion = {}; // what is the currentQuestion
 let questionCounter = 0; // what number question is it?
 let availableQuestions = []; // how many questions are available?
 
+// storage vars
+let finalScore = document.getElementById("final-score");
+let initial = document.getElementById("player");
+const submitBtn = document.getElementById("submit");
+const currentScore = localStorage.getItem("currentScore");
 
-
-
-// list of all questions, choices, and answers
+// COMPLETE! list of all questions, choices, and answers
 let fullQuestions = [
   {
     question: 'Commonly used data types DO NOT include:',
@@ -48,13 +51,13 @@ let fullQuestions = [
   }
 ]; 
 
-// count down timer function
+//COMPLETE! count down timer function
 function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = "Timer: " + secondsLeft;
     
-    if (secondsLeft === 0) {
+    if (secondsLeft <= 0) {
 
       timeEl.textContent = "You have run out of time!";
       clearInterval(timerInterval);
@@ -67,15 +70,11 @@ function setTime() {
   function endTimer() {
     clearInterval(timerInterval);
     timeEl.textContent = "Quiz has ended!"
-    resultsPage(); // FIXME: this is not working - needs you to press on answer to go to results and then stores results.
+    resultsPage(); 
   }
 };
 
-
-// storage vars
-let finalScore = document.getElementById("#final-score");
-
-// looks at DISPLAY. start quiz function - hide welcome header and intro, show quiztime headser and first question.
+// COMPLETE! looks at DISPLAY. start quiz function - hide welcome header and intro, show quiztime headser and first question.
 function quiz() { 
   if (quizDisplay.dataset = 'hidden'){
   intro.style.display = 'none';
@@ -87,12 +86,14 @@ function quiz() {
   }     
 };
 
+// COMPLETE! tiggering get new questions and connecting it to full question list.
 function questionTime () {
   questionCounter=0;
   availableQuestions= [...fullQuestions];
   getNewQuestion();
 }
 
+// COMPLETE! function brings questions to user.
 function getNewQuestion() {
   if (availableQuestions.length == 0 || secondsLeft ==0){
     resultsPage();
@@ -120,7 +121,7 @@ function getNewQuestion() {
 
 }  
 
-// identifying if answe is correct and changing colours to reflect choice.
+// COMPLETE! identifying if answer is correct and changing colours to reflect choice.
 choices.forEach (choice => {
   choice.addEventListener('click', (e) => {
     console.log(e.target);
@@ -129,11 +130,12 @@ choices.forEach (choice => {
     
     // always make correct answer green and only show red when selectedAnswer =incorrect
     var result = "incorrect";
-      if (selectedAnswer == currentQuestion.answer) {
+    if (selectedAnswer == currentQuestion.answer) {
       result = "correct";
-      // secondsLeft = secondsLeft - 5; //FIXME: not removing time as expected.
-    }
+    } else {
+    secondsLeft = secondsLeft - 5; 
 
+    }
     selectedChoice.classList.add(result);
 
     setTimeout(() => {
@@ -142,8 +144,6 @@ choices.forEach (choice => {
     }, 1000)
   });
 })  
-
-
 
 // master function.
 function quizTime() {
@@ -158,7 +158,7 @@ function quizTime() {
  
 };
 
-// WORKING AS EXPECTED. Display for results post quiz
+// COMPLETE! Display for results post quiz
 function resultsPage(){
   if (results.dataset = 'hidden'){
     quizDisplay.style.display = 'none';
@@ -170,22 +170,12 @@ function resultsPage(){
   } 
 }
 
-function endQuiz(){
-  
-}
-
-// master event listener attached to the start button.
-
-
-const initial = document.getElementById("initials");
-const submitBtn = document.getElementById("#submit");
-const currentScore = localStorage.getItem("currentScore");
 finalScore = secondsLeft;
 // FIXME: put final score into the text value of #final-score in the html.
 // need to store the final score in localStorage (seconds left). 
 
 function submitresult(){
-  submitBtn.disabled = !initial.value; //FIXME: not working for some reason
+  // submitBtn.disabled = initial.value; //FIXME: not working for some reason
   
   initial.addEventListener("click",(e) =>{
     localStorage.setItem("finalScore", finalScore.value);
@@ -205,5 +195,5 @@ function submitresult(){
   
   // gitBtn.addEventListener('mouseover', changeImgSrc);
   
-  
+// COMPLETE! master event listener attached to the start button.
 startBtn.addEventListener("click", quizTime);
