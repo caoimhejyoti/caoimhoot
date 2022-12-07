@@ -75,7 +75,7 @@ function setTime() {
 
 
 // storage vars
-
+let finalScore = document.getElementById("#final-score");
 
 // looks at DISPLAY. start quiz function - hide welcome header and intro, show quiztime headser and first question.
 function quiz() { 
@@ -100,7 +100,10 @@ function getNewQuestion() {
     resultsPage();
     setTime.endTimer();
     console.log(secondsLeft + " seconds remaining");
-    localStorage.setItem("currentScore", finalScore);
+    localStorage.setItem("currentScore", secondsLeft);
+
+    finalScore.textContent = secondsLeft;
+    return;
 
   }else{
     // add question
@@ -175,7 +178,7 @@ function endQuiz(){
 
 // master event listener attached to the start button.
 
-let finalScore = document.getElementById("#final-score");
+
 const initial = document.getElementById("initials");
 const submitBtn = document.getElementById("#submit");
 const currentScore = localStorage.getItem("currentScore");
