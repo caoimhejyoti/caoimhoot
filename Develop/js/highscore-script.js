@@ -1,8 +1,6 @@
 let finishTime = localStorage.getItem("time");
 let score = document.querySelector("score")
 
-
-
 let player = ""
 let firstPlace = document.getElementById("first-score");
 let secondPlace = document.getElementById("second-score");
@@ -30,11 +28,29 @@ let highscoreArray = [
     rank: "Third Place",
     score: 0,
     initial: "",
+  },
+    {
+    rank: "Fourth Place",
+    score: 0,
+    initial: "",
   }
 ];
 
 currentResult = localStorage.getItem ("currentScore");
 currentPlayer = localStorage.getItem ("player");
+
+// function highScoreBase(){
+//   firstPlace.innerHTML=highscoreArray[0].score;
+//   firstPlace.innerHTML=highscoreArray[0].initial;
+//   secondPlace.innerHTML=highscoreArray[1].score;
+//   secondPlace.innerHTML=highscoreArray[1].initial;
+//   thirdPlace.innerHTML=highscoreArray[2].score;
+//   thirdPlace.innerHTML=highscoreArray[2].initial;
+//   fourthPlace.innerHTML=highscoreArray[3].score;
+//   fourthPlace.innerHTML=highscoreArray[3].initial;
+
+// }
+
 
 currentGame = [
   {
@@ -46,13 +62,19 @@ currentGame = [
 
 function setHighScore(){
   console.log("set high score worked");
-  if (currentGame[0].score>=highscoreArray[0].score){
+  if (currentGame[0].score>=highscoreArray[0].score && currentGame[0].score>highscoreArray[1].score && currentGame[0].score>highscoreArray[2].score){
     let tempScore=highscoreArray[0].score;
+    highscoreArray[2].score=highscoreArray[1].score;
+    highscoreArray[2].initial=highscoreArray[1].initial;
+    highscoreArray[1].score=highscoreArray[0].score;
+    highscoreArray[1].initital=highscoreArray[0].initital;
     highscoreArray[0].score=currentGame[0].score;
     highscoreArray[0].initial=currentGame[0].initial;
     console.log("if statement reached");
     firstPlace.innerHTML=currentResult;
     firstInitialEl.innerHTML=currentPlayer;
+    secondPlace.innerHTML
+
 
 
   }else if (currentGame[1]>=highscoreArray[1][1]){
@@ -72,23 +94,3 @@ function setHighScore(){
 
 setHighScore();
 
-
-function createScore() {
-    score.textContent = finishTime.textContent;
-  
-    if (score > document.querySelector("#fourth-score")){
-    replace(document.querySelector("#fourth-score"))
-  
-    }else if (score > document.querySelector("#third-score")){
-    replace(document.querySelector("#third.score"))
-  
-    }else if (score > document.querySelector("#second-score")){
-    replace(document.querySelector("#second.score"))
-  
-    }else if (score > document.querySelector("#first-score")){
-    replace(document.querySelector("#first-score"))
-  
-    }
-  }
-
-  // use JSON
