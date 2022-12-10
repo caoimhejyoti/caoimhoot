@@ -28,6 +28,11 @@ let initial = document.getElementById("player-inititals");
 const submitBtn = document.getElementById("submit-btn");
 const currentScore = localStorage.getItem("currentScore");
 
+// highscore vars
+var highscoreObject = JSON.parse(localStorage.getItem("highscoreArray"));
+let sortedScores = [];
+
+
 
 // FINISHED! list of all questions, choices, and answers
 let fullQuestions = [
@@ -178,7 +183,7 @@ function resultsPage(){
 
 // array/object linking iniital and seconds left. 
 function arrayScores () {
-  let highscoreArray = {initial, secondsLeft};
+  let highscoreArray = [initial, secondsLeft];
   console.log(highscoreArray);
   // const nameStr = document.getElementById("initital");
   // const nameStrValue = nameStr.value;
@@ -209,9 +214,8 @@ function submitResults(){
   highscoresPage();
 
   // get scores from local storage
-  var highscoreObject = JSON.parse(localStorage.getItem("highscoreArray"));
   console.log(highscoreObject);
-  let sortedScores = [];
+  
   
   // scores get added to highscore array
   for (var initital in highscoreObject) {
@@ -230,8 +234,8 @@ function submitResults(){
     console.log(liEl, olEl, secondsLeft);
     olEl.appendChild(liEL);
     liEL.innerHTML = secondsLeft;
-  }
 
+  }
   // if score is in top 3 - message reads congratualtions
 
   // COMPLETE! ask user if they want to play again? - part of HTML
