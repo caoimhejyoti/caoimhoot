@@ -9,8 +9,10 @@ var intro = document.querySelector(".intro");
 var quizDisplay = document.querySelector(".quiz");
 var titleWelcome = document.querySelector("#Title1");
 var titleQuiz = document.querySelector("#Title2");
-const results = document.querySelector("form");
+const results = document.querySelector(".results");
 const titleResults = document.querySelector("#Title3");
+const titleHighscore = document.querySelector("#Title4");
+const highscorePage = document.querySelector(".highscore-page");
 
 // quiz vars
 const question = document.getElementById("question");
@@ -22,11 +24,12 @@ let availableQuestions = []; // how many questions are available?
 
 // storage vars
 let finalScore = document.getElementById("final-score");
-let initial = document.getElementById("player");
-const submitBtn = document.getElementById("submit");
+let initial = document.getElementById("player-inititals");
+const submitBtn = document.getElementById("submit-btn");
 const currentScore = localStorage.getItem("currentScore");
 
-// COMPLETE! list of all questions, choices, and answers
+
+// FINISHED! list of all questions, choices, and answers
 let fullQuestions = [
   {
     question: 'Commonly used data types DO NOT include:',
@@ -51,7 +54,7 @@ let fullQuestions = [
   }
 ]; 
 
-//COMPLETE! count down timer function
+//FINISHED! count down timer function
 function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
@@ -74,7 +77,7 @@ function setTime() {
   }
 };
 
-// COMPLETE! looks at DISPLAY. start quiz function - hide welcome header and intro, show quiztime headser and first question.
+// FINISHED! looks at DISPLAY. start quiz function - hide welcome header and intro, show quiztime headser and first question.
 function quiz() { 
   if (quizDisplay.dataset = 'hidden'){
   intro.style.display = 'none';
@@ -86,7 +89,7 @@ function quiz() {
   }     
 };
 
-// COMPLETE! tiggering get new questions and connecting it to full question list.
+// FINISHED! tiggering get new questions and connecting it to full question list.
 function questionTime () {
   questionCounter=0;
   availableQuestions= [...fullQuestions];
@@ -94,8 +97,8 @@ function questionTime () {
 }
 
 
-// array scores - global - store score to global array which is stored in local stora
-// COMPLETE! function brings questions to user.
+// FIXME: array scores - global - store score to global array which is stored in local stora
+//  function brings questions to user.
 function getNewQuestion() {
   if (availableQuestions.length == 0 || secondsLeft ==0){
     resultsPage();
@@ -124,7 +127,7 @@ function getNewQuestion() {
 
 }  
 
-// COMPLETE! identifying if answer is correct and changing colours to reflect choice.
+// FINISHED! identifying if answer is correct and changing colours to reflect choice.
 choices.forEach (choice => {
   choice.addEventListener('click', (e) => {
     console.log(e.target);
@@ -172,6 +175,7 @@ function resultsPage(){
       titleResults.style.display = 'flex';
   } 
 }
+
 // array/object linking iniital and seconds left. 
 function arrayScores () {
   let highscoreArray = {initial, secondsLeft};
@@ -184,21 +188,70 @@ function arrayScores () {
   console.log(highscoreObject);
 }
 
-//FIXME: not working for some reason. Can still submit without filling out inititals.
-function submitresult(){
-  submitBtn.disabled == null; 
+// FINISHED! Display for highscores.
+function highscoresPage(){
+  if (highscorePage.dataset = 'hidden'){
+    results.style.display = 'none';
+    highscorePage.style.display = 'flex';
+  }
+  if (titleWelcome.dataset = 'hidden'){
+      titleQuiz.style.display = 'none';
+      titleResults.style.display = 'flex';
+  } 
 }
 
-// COMPLETE! submiting results and connecting to Highscore HTML page.
-submitBtn.addEventListener("click",(e) =>{
-  e.preventDefault();
-  console.log("submit button works");
-  localStorage.setItem("player", initial.value);
-  currentScore.textContent= secondsLeft;
-  document.location.href = "highscores.html";
+// Function - user submits inititals (triggered by event listener)
+function submitResults(){
+  // call funtion - submitted score and initials create object and stored in local storage (JSON).
   arrayScores();
-  console.log("array scores works");
-})
+
+  // call function - bring us highscores page
+  highscoresPage();
+
+  // get scores from local storage
+  var highscoreObject = JSON.parse(localStorage.getItem("highscoreArray"));
+  console.log(highscoreObject);
+  let sortedScores = [];
+  
+  // scores get added to highscore array
+  for (var initital in highscoreObject) {
+    sortedScores.push([initital,highscoreObject[initital]]);
+  }
+
+  // highscore array is sorted
+  sortedScores.sort((a,b) => {
+    return b[1] - a[1];
+  });
+
+  // highscores are displayed
+  for (let i=0; i<sortedScores.length-1; i++) {
+    let olEl = document.getElementById("highscores");
+    let liEl = document.createElement("li");
+    console.log(liEl, olEl, secondsLeft);
+    olEl.appendChild(liEL);
+    liEL.innerHTML = secondsLeft;
+  }
+
+  // if score is in top 3 - message reads congratualtions
+
+  // COMPLETE! ask user if they want to play again? - part of HTML
+
+};
+
+
+submitBtn.addEventListener("click",submitResults);
+
+
+// FIXME: cannot read properties of null - reading appendChild on line 254. submiting results and connecting to Highscore HTML page.
+// submitBtn.addEventListener("click",(e) =>{
+//   e.preventDefault();
+//   console.log("submit button works");
+//   localStorage.setItem("player", initial.value);
+//   currentScore.textContent= secondsLeft;
+//   // document.location.href = "highscores.html";
+//   arrayScores();
+//   console.log("array scores works");
+// })
 
 
 
@@ -210,29 +263,16 @@ submitBtn.addEventListener("click",(e) =>{
   
   // gitBtn.addEventListener('mouseover', changeImgSrc);
   
-// COMPLETE! master event listener attached to the start button.
-startBtn.addEventListener("click", quizTime);
+
 
 
 
  
 
-var highscoreObject = JSON.parse(localStorage.getItem("highscoreArray"));
-console.log(highscoreObject);
-let sortedScores = [];
 
-for (var initital in highscoreObject) {
-  sortedScores.push([initital,highscoreObject[initital]]);
-}
 
-sortedScores.sort((a,b) => {
-  return b[1] - a[1];
-});
 
-for (let i=0; i<sortedScores.length-1; i++) {
-  let olEl = document.getElementById("highscores");
-  let liEl = document.createElement("li");
-  console.log(liEl, olEl, secondsLeft);
-  olEl.appendChild(liEL);
-  liEL.innerHTML = secondsLeft;
-}
+
+
+// COMPLETE! master event listener attached to the start button.
+startBtn.addEventListener("click", quizTime);
