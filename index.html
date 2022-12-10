@@ -5,24 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Caoimhoot</title>
+    <!-- reset css -->
     <link rel="stylesheet" href="Develop/css/rest.css" />
+    <!-- Main CSS stylesheet -->
     <link rel="stylesheet" href="Develop/css/style.css" />
+    <!-- Variables style sheet -->
     <link rel="stylesheet" href="Develop/css/variables.css" />
   </head>
 
   <body>
     <!-- universal header across all hidden "pages" -->
     <nav id="nav">
-      <!-- <h2><a href="highscores.html">Highscores</a></h2> -->
       <h2 class="time">Timer</h2>
     </nav>
 
     <!-- multiple headers to reflect the various hidded "pages" -->
     <header>
       <h1 id="Title1" data-state="hidden">Welcome to Caoimhoot!</h1>
-      <h1 id="Title2" data-state = "hidden">Quiz time</h1>
-      <h1 id="Title3" data-state = "hidden">Results</h1>
-      <h1 id="Title4" data-state = "hidden">Highscores</h1>
+      <h1 id="Title2" data-state="hidden">Quiz time</h1>
+      <h1 id="Title3" data-state="hidden">Results</h1>
+      <h1 id="Title4" data-state="hidden">Highscores</h1>
     </header>
 
     <!-- Landing page -->
@@ -33,55 +35,56 @@
       <p>Take the quiz - if you dare!</p>
       <button class="start-btn">Start quiz</button>
     </section>
-    
+
     <!-- Quiz page -->
     <section class="quiz" data-state="hidden">
-      <h2 id=question>Question 1</h2>
-      <!-- click button and reveals quiz container -->
-      <div class="quiz-container" data-state = "hidden">
-        <div class="choice-container"  data-state = "hidden">
-          <div class = "choice" data-number = "1">Answer 1</div>
+      <h2 id="question"></h2>
+      <div class="quiz-container" data-state="hidden">
+        <div class="choice-container" data-state="hidden">
+          <div class="choice" data-number="1">Answer 1</div>
         </div>
-        <div class="choice-container"  data-state = "hidden">
-          <div class = "choice" data-number = "2">Answer 2</div>
+        <div class="choice-container" data-state="hidden">
+          <div class="choice" data-number="2">Answer 2</div>
         </div>
-        <div class="choice-container"  data-state = "hidden">
-          <div class = "choice" data-number = "3">Answer 2</div>
+        <div class="choice-container" data-state="hidden">
+          <div class="choice" data-number="3">Answer 2</div>
         </div>
       </div>
     </section>
 
     <!-- Results page -->
     <section class="results" data-state="hidden">
-        <!-- display current score -->
-        <h1 id=final-score></h1>
+      <!-- display current score -->
+      <h1 id="final-score"></h1>
       <!-- enter player initials -->
-        <h2 id = lable for="initials">Enter Initials</h2>
-        <input type="text" class="player" id="player-initials"/>
-        <button><input type="submit" id = "submit-btn" value="Submit"/></button>
+      <h2 id="lable" for="initials">Enter Initials</h2>
+      <input type="text" class="player" id="player-initials" />
+      <button><input type="submit" id="submit-btn" value="Submit" /></button>
     </section>
-    
+
     <!-- Highscores Page -->
     <section class="highscore-page" data-state="hidden">
+      <!-- scores section -->
       <section class="highscore-display">
-        <!-- <h1></h1> -->
-        <ol id="highscore">
-        </ol>
-        <!-- <h2 class = "better-luck"></h2> -->
+        <ol id="highscore"></ol>
       </section>
+      <!-- Try again section -->
       <section class="again">
         <p>Think you can do better?</p>
-        <button class = "refresh">Try again!</button>
-      </section>  
+        <button class="refresh">Try again!</button>
+      </section>
       <!-- clear highscore button -->
       <button class="clear">Clear Highscores</button>
     </section>
 
-    <!-- link to github -->
     <footer>
       <h4>What to see more?</h4>
+      <!-- link to github -->
       <a href="https://github.com/caoimhejyoti" target="_blank">
-        <img class="github" src="Develop/assets/img/GitHub-Mark-Light-120px-plus.png"> 
+        <img
+          class="github"
+          src="Develop/assets/img/GitHub-Mark-Light-120px-plus.png"
+        />
       </a>
     </footer>
 
