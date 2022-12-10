@@ -78,6 +78,8 @@ https://www.w3schools.com/jsref/met_storage_setitem.asp
 https://www.w3schools.com/js/js_htmldom_nodes.asp
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Deprecated_expression_closures#:~:text=The%20JavaScript%20warning%20%22expression%20closures,the%20warning%20message%20is%20obsolete
 https://stackoverflow.com/questions/27156483/changing-image-src-on-hover
+https://stackoverflow.com/questions/979256/sorting-an-array-of-objects-by-property-values
+https://stackoverflow.com/questions/40250139/how-can-i-push-an-object-into-an-array
 
 ## License
 Please refer to the LICENSE in the repo.
