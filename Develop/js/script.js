@@ -183,7 +183,7 @@ function resultsPage(){
 
 // array/object linking iniital and seconds left. 
 function arrayScores () {
-  let highscoreArray = [initial, secondsLeft];
+  let highscoreArray = [initial.value, secondsLeft];
   console.log(highscoreArray);
   // const nameStr = document.getElementById("initital");
   // const nameStrValue = nameStr.value;
