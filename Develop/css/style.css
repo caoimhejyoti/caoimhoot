@@ -134,7 +134,7 @@ header #Title4{
 
 /*FIXME: confirm if this section is needed or the id results.  html 55 */
 .results {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
