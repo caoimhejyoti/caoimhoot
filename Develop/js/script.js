@@ -93,6 +93,8 @@ function questionTime () {
   getNewQuestion();
 }
 
+
+// array scores - global - store score to global array which is stored in local stora
 // COMPLETE! function brings questions to user.
 function getNewQuestion() {
   if (availableQuestions.length == 0 || secondsLeft ==0){
@@ -100,6 +102,7 @@ function getNewQuestion() {
     setTime.endTimer();
     console.log(secondsLeft + " seconds remaining");
     localStorage.setItem("currentScore", secondsLeft);
+    
     // displaying results on results page
     finalScore.textContent = secondsLeft;
     
@@ -169,6 +172,17 @@ function resultsPage(){
       titleResults.style.display = 'flex';
   } 
 }
+// array/object linking iniital and seconds left. 
+function arrayScores () {
+  let highscoreArray = {initial, secondsLeft};
+  console.log(highscoreArray);
+  // const nameStr = document.getElementById("initital");
+  // const nameStrValue = nameStr.value;
+  // highscores[nameStrValue] = secondsLeft;
+  let highscoreObject = JSON.stringify(highscoreArray);
+  localStorage.setItem("highscoreArray", highscoreObject);
+  console.log(highscoreObject);
+}
 
 //FIXME: not working for some reason. Can still submit without filling out inititals.
 function submitresult(){
@@ -177,11 +191,13 @@ function submitresult(){
 
 // COMPLETE! submiting results and connecting to Highscore HTML page.
 submitBtn.addEventListener("click",(e) =>{
-  event.preventDefault();
+  e.preventDefault();
   console.log("submit button works");
   localStorage.setItem("player", initial.value);
-  currentScore.textContent= secondsLeft.value;
+  currentScore.textContent= secondsLeft;
   document.location.href = "highscores.html";
+  arrayScores();
+  console.log("array scores works");
 })
 
 
@@ -196,3 +212,27 @@ submitBtn.addEventListener("click",(e) =>{
   
 // COMPLETE! master event listener attached to the start button.
 startBtn.addEventListener("click", quizTime);
+
+
+
+ 
+
+var highscoreObject = JSON.parse(localStorage.getItem("highscoreArray"));
+console.log(highscoreObject);
+let sortedScores = [];
+
+for (var initital in highscoreObject) {
+  sortedScores.push([initital,highscoreObject[initital]]);
+}
+
+sortedScores.sort((a,b) => {
+  return b[1] - a[1];
+});
+
+for (let i=0; i<sortedScores.length-1; i++) {
+  let olEl = document.getElementById("highscores");
+  let liEl = document.createElement("li");
+  console.log(liEl, olEl, secondsLeft);
+  olEl.appendChild(liEL);
+  liEL.innerHTML = secondsLeft;
+}
