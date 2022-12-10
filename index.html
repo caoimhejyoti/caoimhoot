@@ -11,7 +11,8 @@
   </head>
 
   <body>
-    <!-- universal header across all hidden "pages" -->
+    <!-- FIXME: link to Hightscore HTML needs to ber updated. 
+    universal header across all hidden "pages" -->
     <nav id="nav">
       <h2><a href="highscores.html">Highscores</a></h2>
       <h2 class="time">Timer</h2>
@@ -25,7 +26,7 @@
       <h1 id="Title4" data-state = "hidden">Highscores</h1>
     </header>
 
-    <!-- Welcome to Caoimhoot page -->
+    <!-- Landing page -->
     <section class="intro">
       <p>
         This quiz will test you on all the important elements in JavaScript.
@@ -53,12 +54,12 @@
 
     <!-- Results page -->
     <section class="results" data-state="hidden">
-      <h1 id=final-score></h1>
-        <form> 
-          <h1 id = lable for="initials">Enter Initials</h1>
-          <input type="text" class="player" id="player" placeholder="TS" />
-          <button><a href="highscores.html"><input type="submit" id = submit value="Submit"/></a></button>
-        </form>
+        <!-- display current score -->
+        <h1 id=final-score></h1>
+      <!-- enter player initials -->
+        <h2 id = lable for="initials">Enter Initials</h2>
+        <input type="text" class="player" id="player-inititals"/>
+        <button><input type="submit" id = "submit-btn" value="Submit"/></button>
     </section>
     
     <!-- Highscores Page -->
@@ -67,12 +68,11 @@
         <h1 id=highscore></h1>
         <ol>
         </ol>
-        </section>
         <h2 class = "better-luck"></h2>
       </section>
       <section class="again">
         <p>Think you can do better? Try again!</p>
-      <!-- link to function get new question function? -->
+      <!-- FIXME: Link needs to be updated. Redirect to landing page -->
         <a href = "index.html"><button class="start-btn">Try quiz again</button></a>
       </section>  
     </section>
