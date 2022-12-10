@@ -9,11 +9,15 @@
     <link rel="stylesheet" href="Develop/css/style.css" />
     <link rel="stylesheet" href="Develop/css/variables.css" />
   </head>
+
   <body>
+    <!-- universal header across all hidden "pages" -->
     <nav id="nav">
       <h2><a href="highscores.html">Highscores</a></h2>
       <h2 class="time">Timer</h2>
     </nav>
+
+    <!-- multiple headers to reflect the various hidded "pages" -->
     <header>
       <h1 id="Title1" data-state="hidden">Welcome to Caoimhoot!</h1>
       <h1 id="Title2" data-state = "hidden">Quiz time</h1>
@@ -21,43 +25,59 @@
       <h1 id="Title4" data-state = "hidden">Highscores</h1>
     </header>
 
-    <body>
-      <section class="intro">
-        <p>
-          This quiz will test you on all the important elements in JavaScript.
-        </p>
-        <p>Take the quiz - if you dare!</p>
-        <button class="start-btn">Start quiz</button>
-      </section>
-      
-      <section class="quiz" data-state="hidden">
-        <h2 id=question>Question 1</h2>
-        <!-- click button and reveals quiz container -->
-        <div class="quiz-container" data-state = "hidden">
-          <div class="choice-container"  data-state = "hidden">
-            <div class = "choice" data-number = "1">Answer 1</div>
-          </div>
-          <div class="choice-container"  data-state = "hidden">
-            <div class = "choice" data-number = "2">Answer 2</div>
-          </div>
-          <div class="choice-container"  data-state = "hidden">
-            <div class = "choice" data-number = "3">Answer 2</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="results" data-state="hidden">
-        <h1 id=final-score></h1>
-          <form> 
-            <h1 id = lable for="initials">Enter Initials</h1>
-            <input type="text" class="player" id="player" placeholder="TS" />
-            <button><a href="highscores.html"><input type="submit" id = submit value="Submit"/></a></button>
-          </form>
+    <!-- Welcome to Caoimhoot page -->
+    <section class="intro">
+      <p>
+        This quiz will test you on all the important elements in JavaScript.
+      </p>
+      <p>Take the quiz - if you dare!</p>
+      <button class="start-btn">Start quiz</button>
     </section>
     
-    </body>
+    <!-- Quiz page -->
+    <section class="quiz" data-state="hidden">
+      <h2 id=question>Question 1</h2>
+      <!-- click button and reveals quiz container -->
+      <div class="quiz-container" data-state = "hidden">
+        <div class="choice-container"  data-state = "hidden">
+          <div class = "choice" data-number = "1">Answer 1</div>
+        </div>
+        <div class="choice-container"  data-state = "hidden">
+          <div class = "choice" data-number = "2">Answer 2</div>
+        </div>
+        <div class="choice-container"  data-state = "hidden">
+          <div class = "choice" data-number = "3">Answer 2</div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Results page -->
+    <section class="results" data-state="hidden">
+      <h1 id=final-score></h1>
+        <form> 
+          <h1 id = lable for="initials">Enter Initials</h1>
+          <input type="text" class="player" id="player" placeholder="TS" />
+          <button><a href="highscores.html"><input type="submit" id = submit value="Submit"/></a></button>
+        </form>
+    </section>
+    
+    <!-- Highscores Page -->
+    <section class="highscore-page" data-state="hidden">
+      <section class="highscore-display">
+        <h1 id=highscore></h1>
+        <ol>
+        </ol>
+        </section>
+        <h2 class = "better-luck"></h2>
+      </section>
+      <section class="again">
+        <p>Think you can do better? Try again!</p>
+      <!-- link to function get new question function? -->
+        <a href = "index.html"><button class="start-btn">Try quiz again</button></a>
+      </section>  
+    </section>
 
+    <!-- link to github -->
     <footer>
       <h4>What to see more?</h4>
       <a href="https://github.com/caoimhejyoti" target="_blank">
@@ -67,4 +87,4 @@
 
     <script src="Develop/js/script.js"></script>
   </body>
-</html> -->
+</html>
