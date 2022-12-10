@@ -6,19 +6,15 @@
     margin: 10px;
 }
 
-
 /* header display */
 header {
     display: flexbox;
-
-
 }
 
 header #Title1 {
     display: flex;
     align-items: center;
-    justify-content: center;
-    
+    justify-content: center; 
 }
 
 header #Title2{
@@ -46,7 +42,6 @@ header #Title4{
     justify-content: center;
     align-items: center;
     padding: 10px;
-
 }
 
 .intro p{
@@ -58,7 +53,6 @@ header #Title4{
     margin: 50px;
     font-size: 2rem;
 }
-
 
 /* quiz page */
 .quiz{
@@ -117,9 +111,7 @@ header #Title4{
     border: 5px solid;
     border-radius: 50px;
     background-color: #f25757;
-    /* color: var(--background-color); */
 }
-
 
 /* resutls page */
 .results {
@@ -132,19 +124,10 @@ header #Title4{
     margin: 10px;
 } 
 
-form{
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    font-size: 1.2rem;
-}
 
 #label, #player-initials{
     padding: 20px;
     margin: 10px;
-
 }
 
 #submit-btn{
@@ -154,7 +137,6 @@ form{
 #submit-btn:hover{
     color: var(----dark-color);
 }
-
 
 /* highscore page */
 .highscore-page{
@@ -166,10 +148,23 @@ form{
     font-size: 2vw;
 }
 
+/* try again section */
 .again{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 20px;
+}
+
+.again button{
+    margin: 20px;
+}
+
+.clear{
+    padding: 10px;
+    margin: 20px;
 }
 
 /* footer css */
