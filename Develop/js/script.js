@@ -199,9 +199,9 @@ function highscoresPage(){
     results.style.display = 'none';
     highscorePage.style.display = 'flex';
   }
-  if (titleWelcome.dataset = 'hidden'){
-      titleQuiz.style.display = 'none';
-      titleResults.style.display = 'flex';
+  if (titleHighscore.dataset = 'hidden'){
+      titleResults.style.display = 'none';
+      titleHighscore.style.display = 'flex';
   } 
 }
 
@@ -229,11 +229,11 @@ function submitResults(){
 
   // highscores are displayed
   for (let i=0; i<sortedScores.length-1; i++) {
-    let olEl = document.getElementById("highscores");
+    let olEl = document.getElementById("highscore");
     let liEl = document.createElement("li");
     console.log(liEl, olEl, secondsLeft);
-    olEl.appendChild(liEL);
-    liEL.innerHTML = secondsLeft;
+    olEl.appendChild(liEl);
+    liEl.innerHTML = secondsLeft;
 
   }
   // if score is in top 3 - message reads congratualtions
