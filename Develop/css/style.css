@@ -121,18 +121,7 @@ header #Title4{
 }
 
 
-/* results page */
-/* show results form - FIXME: is this chunk necessary?
-#results{
-    display: flex;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-} */
-
-/*FIXME: confirm if this section is needed or the id results.  html 55 */
+/* resutls page */
 .results {
     display: none;
     flex-direction: column;
@@ -152,7 +141,7 @@ form{
     font-size: 1.2rem;
 }
 
-#label, #player, #submit{
+#label, #player-initials{
     padding: 20px;
     margin: 10px;
 
@@ -177,7 +166,11 @@ form{
     font-size: 2vw;
 }
 
-
+.again{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 /* footer css */
 footer img{
