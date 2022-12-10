@@ -25,7 +25,7 @@ let availableQuestions = []; // how many questions are available?
 
 // storage vars
 let finalScore = document.getElementById("final-score");
-let initial = document.getElementById("player-inititals");
+let initial = document.getElementById("player-initials");
 const submitBtn = document.getElementById("submit-btn");
 // let currentScore = localStorage.getItem("currentScore");
 let currentScore = "";
