@@ -13,6 +13,7 @@ const results = document.querySelector(".results");
 const titleResults = document.querySelector("#Title3");
 const titleHighscore = document.querySelector("#Title4");
 const highscorePage = document.querySelector(".highscore-page");
+const tryAgain = document.querySelector(".refresh")
 
 // quiz vars
 const question = document.getElementById("question");
@@ -26,12 +27,15 @@ let availableQuestions = []; // how many questions are available?
 let finalScore = document.getElementById("final-score");
 let initial = document.getElementById("player-inititals");
 const submitBtn = document.getElementById("submit-btn");
-const currentScore = localStorage.getItem("currentScore");
+// let currentScore = localStorage.getItem("currentScore");
+let currentScore = "";
 
 // highscore vars
-var highscoreObject = JSON.parse(localStorage.getItem("highscoreArray"));
+// var highscoreObject = JSON.parse(localStorage.getItem("highscoreArray"));
 let sortedScores = [];
-
+let olEl = document.getElementById("highscore");
+let scoreArray = JSON.parse(localStorage.getItem("scoreArray")) || [];
+let clearBtn = document.querySelector(".clear");
 
 
 // FINISHED! list of all questions, choices, and answers
@@ -59,6 +63,14 @@ let fullQuestions = [
   }
 ]; 
 
+// COMPLETE! master quiz function.
+function quizTime() {
+  setTime();
+  quiz();
+  questionTime();
+
+};
+
 //FINISHED! count down timer function
 function setTime() {
   var timerInterval = setInterval(function () {
@@ -82,7 +94,7 @@ function setTime() {
   }
 };
 
-// FINISHED! looks at DISPLAY. start quiz function - hide welcome header and intro, show quiztime headser and first question.
+// FINISHED! DISPLAY: hide welcome header and intro, show quiztime header and first question.
 function quiz() { 
   if (quizDisplay.dataset = 'hidden'){
   intro.style.display = 'none';
@@ -102,14 +114,14 @@ function questionTime () {
 }
 
 
-// FIXME: array scores - global - store score to global array which is stored in local stora
+
 //  function brings questions to user.
 function getNewQuestion() {
   if (availableQuestions.length == 0 || secondsLeft ==0){
     resultsPage();
     setTime.endTimer();
     console.log(secondsLeft + " seconds remaining");
-    localStorage.setItem("currentScore", secondsLeft);
+    // localStorage.setItem("currentScore", secondsLeft);
     
     // displaying results on results page
     finalScore.textContent = secondsLeft;
@@ -156,20 +168,10 @@ choices.forEach (choice => {
   });
 })  
 
-// master function.
-function quizTime() {
-  setTime();
-  console.log("set time is working");
-  quiz();
-  console.log(quiz());
-  console.log("quiz is working");
-  questionTime();
-  console.log(questionTime());
-  console.log("questionTime is working");
- 
-};
 
-// COMPLETE! Display for results post quiz
+
+
+// COMPLETE! Display: show results post quiz - hide question page.
 function resultsPage(){
   if (results.dataset = 'hidden'){
     quizDisplay.style.display = 'none';
@@ -179,21 +181,30 @@ function resultsPage(){
       titleQuiz.style.display = 'none';
       titleResults.style.display = 'flex';
   } 
+  // submitResults();
 }
 
-// array/object linking iniital and seconds left. 
-function arrayScores () {
-  let highscoreArray = [initial.value, secondsLeft];
-  console.log(highscoreArray);
-  // const nameStr = document.getElementById("initital");
-  // const nameStrValue = nameStr.value;
-  // highscores[nameStrValue] = secondsLeft;
-  let highscoreObject = JSON.stringify(highscoreArray);
-  localStorage.setItem("highscoreArray", highscoreObject);
-  console.log(highscoreObject);
-}
+function submitResults(){
+  var score= {
+    score: secondsLeft, 
+    // score: Math.floor(Math.random()*100), 
+    initial: initial.value,
+  };
+  console.log(score);
 
-// FINISHED! Display for highscores.
+  scoreArray.push(score);
+  localStorage.setItem("scoreArray", JSON.stringify(scoreArray));
+
+  scoreArray.sort((a,b) => b.score - a.score);
+  console.log(scoreArray);
+
+  scoreArray.splice(5);
+
+  highscoresPage();
+  showHighscores();
+};
+
+// FINISHED! Display: show highscores + hide results page
 function highscoresPage(){
   if (highscorePage.dataset = 'hidden'){
     results.style.display = 'none';
@@ -205,77 +216,35 @@ function highscoresPage(){
   } 
 }
 
+
+function showHighscores(){
+  for (let i = 0; i <scoreArray.length; i++){
+    let scoreDetails = `${scoreArray[i].initial}` + " - " + ` ${scoreArray[i].score}` + " points";
+  
+    listItem = document.createElement("li");
+    olEl.appendChild(listItem);
+    listItem.innerHTML = [i+1] + ". " + scoreDetails;
+  }
+  console.log("append works");
+  console.log(listItem);
+  }
+
+
+
 // Function - user submits inititals (triggered by event listener)
-function submitResults(){
-  // call funtion - submitted score and initials create object and stored in local storage (JSON).
-  arrayScores();
 
-  // call function - bring us highscores page
-  highscoresPage();
+clearBtn.addEventListener('click', function(e){
+  e.preventDefault();
+  localStorage.clear();
+  window.location.reload();
 
-  // get scores from local storage
-  console.log(highscoreObject);
-  
-  
-  // scores get added to highscore array
-  for (var initital in highscoreObject) {
-    sortedScores.push([initital,highscoreObject[initital]]);
-  }
+});
 
-  // highscore array is sorted
-  sortedScores.sort((a,b) => {
-    return b[1] - a[1];
-  });
-
-  // highscores are displayed
-  for (let i=0; i<sortedScores.length-1; i++) {
-    let olEl = document.getElementById("highscore");
-    let liEl = document.createElement("li");
-    console.log(liEl, olEl, secondsLeft);
-    olEl.appendChild(liEl);
-    liEl.innerHTML = secondsLeft;
-
-  }
-  // if score is in top 3 - message reads congratualtions
-
-  // COMPLETE! ask user if they want to play again? - part of HTML
-
-};
-
+tryAgain.addEventListener("click", function(e){
+  window.location.reload();
+});
 
 submitBtn.addEventListener("click",submitResults);
-
-
-// FIXME: cannot read properties of null - reading appendChild on line 254. submiting results and connecting to Highscore HTML page.
-// submitBtn.addEventListener("click",(e) =>{
-//   e.preventDefault();
-//   console.log("submit button works");
-//   localStorage.setItem("player", initial.value);
-//   currentScore.textContent= secondsLeft;
-//   // document.location.href = "highscores.html";
-//   arrayScores();
-//   console.log("array scores works");
-// })
-
-
-
-// const gitBtn = document.getElementsByClassName('github');
-
-// function changeImgSrc(){
-  //   gitBtn.src = 'Develop/assets/img/GitHub-Mark-120px-plus.png';
-  // }
-  
-  // gitBtn.addEventListener('mouseover', changeImgSrc);
-  
-
-
-
-
- 
-
-
-
-
 
 
 // COMPLETE! master event listener attached to the start button.

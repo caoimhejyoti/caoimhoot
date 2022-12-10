@@ -1,7 +1,7 @@
 /* Nav display*/
 #nav{
     display: flex;
-    justify-content:space-between;
+    justify-content:flex-end;
     font-size: 1.6vw;
     margin: 10px;
 }
@@ -158,18 +158,18 @@ form{
 
 }
 
-#submit{
+#submit-btn{
     color: var(--background-color);
 }
 
-#submit:hover{
+#submit-btn:hover{
     color: var(----dark-color);
 }
 
 
 /* highscore page */
 .highscore-page{
-    display: none;
+    display: none; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
