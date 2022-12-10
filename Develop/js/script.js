@@ -1,24 +1,22 @@
 // timer vars
 var startBtn = document.querySelector(".start-btn");
 var timeEl = document.querySelector(".time");
-var secondsLeft = 10; //FIXME: change time to 100
-const incorrectPenalty = 5; // Incorrect answer results in loss of time - 5s
+var secondsLeft = 100; 
 
 // dispaly vars
-var intro = document.querySelector(".intro");
-var quizDisplay = document.querySelector(".quiz");
 var titleWelcome = document.querySelector("#Title1");
 var titleQuiz = document.querySelector("#Title2");
-const results = document.querySelector(".results");
 const titleResults = document.querySelector("#Title3");
 const titleHighscore = document.querySelector("#Title4");
+var intro = document.querySelector(".intro");
+var quizDisplay = document.querySelector(".quiz");
+const results = document.querySelector(".results");
 const highscorePage = document.querySelector(".highscore-page");
 const tryAgain = document.querySelector(".refresh")
 
 // quiz vars
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice"));
-console.log(choices);
 let currentQuestion = {}; // what is the currentQuestion
 let questionCounter = 0; // what number question is it?
 let availableQuestions = []; // how many questions are available?
@@ -27,18 +25,16 @@ let availableQuestions = []; // how many questions are available?
 let finalScore = document.getElementById("final-score");
 let initial = document.getElementById("player-initials");
 const submitBtn = document.getElementById("submit-btn");
-// let currentScore = localStorage.getItem("currentScore");
 let currentScore = "";
 
 // highscore vars
-// var highscoreObject = JSON.parse(localStorage.getItem("highscoreArray"));
 let sortedScores = [];
 let olEl = document.getElementById("highscore");
 let scoreArray = JSON.parse(localStorage.getItem("scoreArray")) || [];
 let clearBtn = document.querySelector(".clear");
 
 
-// FINISHED! list of all questions, choices, and answers
+// COMPLETE! list of all questions, choices, and answers
 let fullQuestions = [
   {
     question: 'Commonly used data types DO NOT include:',
@@ -63,26 +59,25 @@ let fullQuestions = [
   }
 ]; 
 
-// COMPLETE! master quiz function.
+// COMPLETE! master quiz function - Triggers multiple functions once startBtn is clicked.
 function quizTime() {
   setTime();
   quiz();
   questionTime();
-
 };
 
-//FINISHED! count down timer function
+//COMPLETE! count down timer function
 function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = "Timer: " + secondsLeft;
     
     if (secondsLeft <= 0) {
-
       timeEl.textContent = "You have run out of time!";
       clearInterval(timerInterval);
       endTimer();
-    }   
+    }  
+
   }, 1000);
 
   setTime.endTimer= endTimer;
@@ -94,39 +89,36 @@ function setTime() {
   }
 };
 
-// FINISHED! DISPLAY: hide welcome header and intro, show quiztime header and first question.
+// COMPLETE! DISPLAY: hide welcome header and intro, show quiztime header and first question.
 function quiz() { 
   if (quizDisplay.dataset = 'hidden'){
-  intro.style.display = 'none';
-  quizDisplay.style.display = 'flex';
+    intro.style.display = 'none';
+    quizDisplay.style.display = 'flex';
   }
+
   if (titleWelcome.dataset = 'hidden'){
-  titleWelcome.style.display = 'none';
-  titleQuiz.style.display = 'flex';
+    titleWelcome.style.display = 'none';
+    titleQuiz.style.display = 'flex';
   }     
 };
 
-// FINISHED! tiggering get new questions and connecting it to full question list.
+// COMPLETE! tiggering get new questions and connecting it to full question list.
 function questionTime () {
   questionCounter=0;
   availableQuestions= [...fullQuestions];
   getNewQuestion();
 }
 
-
-
-//  function brings questions to user.
+// COMPLETE! function brings questions to user.
 function getNewQuestion() {
   if (availableQuestions.length == 0 || secondsLeft ==0){
     resultsPage();
     setTime.endTimer();
     console.log(secondsLeft + " seconds remaining");
-    // localStorage.setItem("currentScore", secondsLeft);
     
     // displaying results on results page
     finalScore.textContent = secondsLeft;
     
-
   }else{
     // add question
     questionCounter++;
@@ -139,25 +131,26 @@ function getNewQuestion() {
       choice.innerText=currentQuestion["choice" + chosenAnswerNumber];
     })
     
+    // once question is asked - remove from choices.
     availableQuestions.splice(questionIndex, 1);
   }
 
 }  
 
-// FINISHED! identifying if answer is correct and changing colours to reflect choice.
+// COMPLETE! identifying if answer is correct and changing colours to reflect choice.
 choices.forEach (choice => {
   choice.addEventListener('click', (e) => {
     console.log(e.target);
     const selectedChoice = e.target;
     const selectedAnswer = selectedChoice.dataset["number"];
     
-    // always make correct answer green and only show red when selectedAnswer =incorrect
+    // always make correct answer green and only show red when selectedAnswer = incorrect
     var result = "incorrect";
     if (selectedAnswer == currentQuestion.answer) {
       result = "correct";
     } else {
-    secondsLeft = secondsLeft - 5; 
-
+      // remove time for incorrect answer (10s)
+    secondsLeft = secondsLeft - 10; 
     }
     selectedChoice.classList.add(result);
 
@@ -165,11 +158,10 @@ choices.forEach (choice => {
       selectedChoice.classList.remove(result);
       getNewQuestion();
     }, 1000)
+
   });
+
 })  
-
-
-
 
 // COMPLETE! Display: show results post quiz - hide question page.
 function resultsPage(){
@@ -181,30 +173,34 @@ function resultsPage(){
       titleQuiz.style.display = 'none';
       titleResults.style.display = 'flex';
   } 
-  // submitResults();
+
 }
 
+// COMPLETE! function: creating score object and storing in local storage.
 function submitResults(){
+  // define score object
   var score= {
     score: secondsLeft, 
-    // score: Math.floor(Math.random()*100), 
+    // score: Math.floor(Math.random()*100), //used to test function during development
     initial: initial.value,
   };
-  console.log(score);
 
+  //add score object to score array and store in local storage
   scoreArray.push(score);
   localStorage.setItem("scoreArray", JSON.stringify(scoreArray));
 
+  // sort score array into descending order
   scoreArray.sort((a,b) => b.score - a.score);
-  console.log(scoreArray);
 
+  // limit score array to 5 items
   scoreArray.splice(5);
 
+  // trigget highscore functions
   highscoresPage();
   showHighscores();
 };
 
-// FINISHED! Display: show highscores + hide results page
+// COMPLETE! Display: show highscores + hide results page
 function highscoresPage(){
   if (highscorePage.dataset = 'hidden'){
     results.style.display = 'none';
@@ -216,7 +212,7 @@ function highscoresPage(){
   } 
 }
 
-
+// COMPLETE! function to show highscores.
 function showHighscores(){
   for (let i = 0; i <scoreArray.length; i++){
     let scoreDetails = `${scoreArray[i].initial}` + " - " + ` ${scoreArray[i].score}` + " points";
@@ -225,14 +221,9 @@ function showHighscores(){
     olEl.appendChild(listItem);
     listItem.innerHTML = [i+1] + ". " + scoreDetails;
   }
-  console.log("append works");
-  console.log(listItem);
-  }
+}
 
-
-
-// Function - user submits inititals (triggered by event listener)
-
+// COMPLETE! Function - user decides to clear highscores.
 clearBtn.addEventListener('click', function(e){
   e.preventDefault();
   localStorage.clear();
@@ -240,10 +231,12 @@ clearBtn.addEventListener('click', function(e){
 
 });
 
+// COMPLETE! Function - user decides to try quiz again
 tryAgain.addEventListener("click", function(e){
   window.location.reload();
 });
 
+// COMPLETE! Function - user submits results
 submitBtn.addEventListener("click",submitResults);
 
 
